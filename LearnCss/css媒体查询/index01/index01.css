@@ -1,0 +1,22 @@
+@media screen and (max-width: 1000px) and (min-width: 500px){
+    .behindMedia{
+        background-color: yellow;
+    }
+}
+.behindMedia{
+    background-color: blue;
+    width: 200px;
+    height: 200px;
+}
+
+.test{
+    width:100px;
+    height: 100px;
+    background-color: green;
+}
+@media screen and (max-width: 1000px) and (min-width: 500px){
+    .test{
+        background-color: red;
+    }
+}
+
