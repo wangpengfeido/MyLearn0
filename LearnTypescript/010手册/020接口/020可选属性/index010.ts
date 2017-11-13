@@ -1,13 +1,15 @@
-interface I {
-    attrOne?: string;
-    attrTwo?: number;
+namespace N010020020010{
+    interface I {
+        attrOne?: string;
+        attrTwo?: number;
+    }
+
+    function test(param: I): { num: number } {
+        console.log(param.attrOne, param.attrTwo);
+
+        return {num: 3};
+    }
+
+    let o = {attrOne: 'aaa'};
+    test(o);
 }
-
-function test(param: I): { num: number } {
-    console.log(param.attrOne, param.attrTwo);
-
-    return {num: 3};
-}
-
-let o = {attrOne: 'aaa'};
-test(o);
