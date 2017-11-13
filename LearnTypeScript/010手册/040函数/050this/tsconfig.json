@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "noImplicitThis": true
+  },
+  "files":[
+    "index020.ts",
+    "index030.ts"
+  ]
+}
