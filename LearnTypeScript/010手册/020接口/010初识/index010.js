@@ -8,6 +8,6 @@ var N010020010010;
     }
     var o = { attrOne: 'aaa', attrTwo: 1, attrThree: 'bbb' };
     test(o);
-    //直接写一个带有attrThree属性的对象会报错，详情参考额外的属性检查
+    //直接写一个带有attrThree属性的对象会报错
     //test({attrOne: 'aaa', attrTwo: 1, attrThree: 'bbb'})；
 })(N010020010010 || (N010020010010 = {}));
