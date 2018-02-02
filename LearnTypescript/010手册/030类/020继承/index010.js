@@ -36,7 +36,7 @@ var N010030020010;
         };
         return Snake;
     }(Animal));
-    var tom = new Snake('tome');
+    var tom = new Snake('tom');
     tom.move();
     //子类对象可以赋给父类对象
     var sam = new Snake('sam');

@@ -26,7 +26,7 @@ namespace N010030020010 {
         }
     }
 
-    let tom = new Snake('tome');
+    let tom = new Snake('tom');
     tom.move();
     //子类对象可以赋给父类对象
     let sam: Animal = new Snake('sam');
