@@ -37,6 +37,22 @@ var N030050010;
             if (distance === void 0) { distance = 5; }
             console.log(this.name + " moved " + distance + " meter");
         };
+        Object.defineProperty(Animal.prototype, "age", {
+            set: function (newAge) {
+                //存取器是特殊的方法，不能为其本身赋值
+                // this.age = newAge + 10;
+                this._age = newAge + 10;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        //如果不写取值方法，取值时将是undefined
+        // get age(){
+        //     return this._age;
+        // }
+        Animal.prototype.consoleAge = function () {
+            console.log(this.age);
+        };
         return Animal;
     }());
     var tom = new Animal('tom');
@@ -46,4 +62,6 @@ var N030050010;
     //不允许(private)
     // console.log(tom.lastName);
     tom.move();
+    tom.age = 20;
+    tom.consoleAge();
 })(N030050010 || (N030050010 = {}));

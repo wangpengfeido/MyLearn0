@@ -30,6 +30,22 @@ namespace N030050010 {
         move(distance: number = 5) {
             console.log(`${this.name} moved ${distance} meter`)
         }
+
+        private _age;
+
+        set age(newAge: number) {
+            //存取器是特殊的方法，不能为其本身赋值
+            // this.age = newAge + 10;
+            this._age = newAge + 10;
+        }
+        //如果不写取值方法，取值时将是undefined
+        // get age(){
+        //     return this._age;
+        // }
+
+        consoleAge() {
+            console.log(this.age);
+        }
     }
 
 
@@ -40,6 +56,9 @@ namespace N030050010 {
     //不允许(private)
     // console.log(tom.lastName);
     tom.move();
+
+    tom.age=20;
+    tom.consoleAge();
 
 
 }

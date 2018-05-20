@@ -15,36 +15,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index010.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/010手册/180装饰器/025方法装饰器/index010.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index010.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/010手册/180装饰器/031访问器装饰器/index010.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="20" column="23" lean-forward="false" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index010.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/010手册/180装饰器/060属性装饰器/index010.ts">
+        <entry file="file://$PROJECT_DIR$/010手册/030类/050存取器/index010.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state relative-caret-position="247">
+              <caret line="40" column="14" lean-forward="false" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -63,7 +39,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/010手册/030类/050存取器/index010.ts" />
         <option value="$PROJECT_DIR$/010手册/030类/060静态属性/index010.ts" />
         <option value="$PROJECT_DIR$/010手册/030类/020继承/index020.ts" />
         <option value="$PROJECT_DIR$/010手册/030类/070抽象类/index010.ts" />
@@ -114,6 +89,7 @@
         <option value="$PROJECT_DIR$/test2.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/test.js" />
+        <option value="$PROJECT_DIR$/010手册/030类/050存取器/index010.ts" />
       </list>
     </option>
   </component>
@@ -129,8 +105,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="43" />
-    <option name="y" value="46" />
+    <option name="x" value="270" />
+    <option name="y" value="42" />
     <option name="width" value="1427" />
     <option name="height" value="997" />
   </component>
@@ -194,6 +170,27 @@
               <item name="LearnTypeScript" type="b2602c69:ProjectViewProjectNode" />
               <item name="LearnTypeScript" type="462c0819:PsiDirectoryNode" />
               <item name="010手册" type="462c0819:PsiDirectoryNode" />
+              <item name="030类" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LearnTypeScript" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LearnTypeScript" type="462c0819:PsiDirectoryNode" />
+              <item name="010手册" type="462c0819:PsiDirectoryNode" />
+              <item name="030类" type="462c0819:PsiDirectoryNode" />
+              <item name="050存取器" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LearnTypeScript" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LearnTypeScript" type="462c0819:PsiDirectoryNode" />
+              <item name="010手册" type="462c0819:PsiDirectoryNode" />
+              <item name="030类" type="462c0819:PsiDirectoryNode" />
+              <item name="050存取器" type="462c0819:PsiDirectoryNode" />
+              <item name="index010.ts" type="620a8d5e:NestingTreeNode" />
+            </path>
+            <path>
+              <item name="LearnTypeScript" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LearnTypeScript" type="462c0819:PsiDirectoryNode" />
+              <item name="010手册" type="462c0819:PsiDirectoryNode" />
               <item name="180装饰器" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -240,26 +237,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.test.js">
+  <component name="RunManager" selected="Node.js.index010.js (1)">
+    <configuration name="index010.js (1)" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="index010.js" working-dir="$PROJECT_DIR$/010手册/030类/050存取器" />
     <configuration name="index010.js (2)" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="index010.js" working-dir="$PROJECT_DIR$/010手册/180装饰器/025方法装饰器" />
     <configuration name="index010.js (3)" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="index010.js" working-dir="$PROJECT_DIR$/010手册/180装饰器/031访问器装饰器" />
     <configuration name="index010.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="index010.js" working-dir="$PROJECT_DIR$/010手册/030类/020继承" />
-    <configuration name="index020.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="index020.js" working-dir="$PROJECT_DIR$/010手册/180装饰器/021类装饰器" />
     <configuration name="test.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="test.js" working-dir="$PROJECT_DIR$" />
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Node.js.index020.js" />
-      <item index="1" class="java.lang.String" itemvalue="Node.js.index010.js" />
-      <item index="2" class="java.lang.String" itemvalue="Node.js.index010.js (2)" />
-      <item index="3" class="java.lang.String" itemvalue="Node.js.index010.js (3)" />
-      <item index="4" class="java.lang.String" itemvalue="Node.js.test.js" />
+      <item index="0" class="java.lang.String" itemvalue="Node.js.index010.js" />
+      <item index="1" class="java.lang.String" itemvalue="Node.js.index010.js (2)" />
+      <item index="2" class="java.lang.String" itemvalue="Node.js.index010.js (3)" />
+      <item index="3" class="java.lang.String" itemvalue="Node.js.test.js" />
+      <item index="4" class="java.lang.String" itemvalue="Node.js.index010.js (1)" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Node.js.test.js" />
-        <item index="1" class="java.lang.String" itemvalue="Node.js.index010.js (3)" />
-        <item index="2" class="java.lang.String" itemvalue="Node.js.index010.js (2)" />
-        <item index="3" class="java.lang.String" itemvalue="Node.js.index010.js" />
-        <item index="4" class="java.lang.String" itemvalue="Node.js.index020.js" />
+        <item index="0" class="java.lang.String" itemvalue="Node.js.index010.js (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Node.js.test.js" />
+        <item index="2" class="java.lang.String" itemvalue="Node.js.index010.js (3)" />
+        <item index="3" class="java.lang.String" itemvalue="Node.js.index010.js (2)" />
+        <item index="4" class="java.lang.String" itemvalue="Node.js.index010.js" />
       </list>
     </recent_temporary>
   </component>
@@ -281,17 +278,19 @@
       <workItem from="1512479845257" duration="2861000" />
       <workItem from="1516190708724" duration="16707000" />
       <workItem from="1516276693999" duration="4990000" />
+      <workItem from="1520854722758" duration="714000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42609000" />
+    <option name="totallyTimeSpent" value="43323000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="43" y="46" width="1427" height="997" extended-state="0" />
+    <frame x="270" y="42" width="1427" height="997" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283237" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24910007" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3275463" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24910007" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2673611" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -373,20 +372,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/010手册/020接口/020可选属性/index010.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/010手册/020接口/040额外的属性检查/index010.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="5" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/010手册/040函数/050this/tsconfig.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -611,7 +596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="9" column="36" lean-forward="true" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -659,9 +643,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -672,10 +653,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/010手册/180装饰器/025方法装饰器/index010.ts">
+    <entry file="file://$PROJECT_DIR$/010手册/test2.js" />
+    <entry file="file://$PROJECT_DIR$/test2.js" />
+    <entry file="file://$PROJECT_DIR$/index.html" />
+    <entry file="file://$PROJECT_DIR$/test.js" />
+    <entry file="file://$PROJECT_DIR$/010手册/180装饰器/060属性装饰器/index010.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+        <state relative-caret-position="171">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -690,44 +675,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/010手册/180装饰器/060属性装饰器/index010.ts">
+    <entry file="file://$PROJECT_DIR$/010手册/180装饰器/025方法装饰器/index010.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state relative-caret-position="114">
+          <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/010手册/test2.js">
+    <entry file="file://$PROJECT_DIR$/010手册/030类/050存取器/index010.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        <state relative-caret-position="-180">
+          <caret line="29" column="1" lean-forward="false" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test2.js">
+    <entry file="file://$PROJECT_DIR$/010手册/030类/050存取器/index010.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="15" lean-forward="true" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="42" column="50" lean-forward="true" selection-start-line="42" selection-start-column="50" selection-end-line="42" selection-end-column="50" />
+        <state relative-caret-position="247">
+          <caret line="40" column="14" lean-forward="false" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
           <folding />
         </state>
       </provider>
