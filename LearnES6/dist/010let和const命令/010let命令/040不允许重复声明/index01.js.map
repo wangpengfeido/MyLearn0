@@ -1,0 +1,1 @@
+{"version":3,"sources":["..\\..\\..\\..\\010let和const命令\\010let命令\\040不允许重复声明\\index01.js"],"names":["a"],"mappings":";;AAAA;;;AAGA,IAAIA,IAAE,CAAN","file":"index01.js","sourcesContent":["/**\r\n * Created by w1036_000 on 2016/11/29.\r\n */\r\nvar a=1;\r\n"]}

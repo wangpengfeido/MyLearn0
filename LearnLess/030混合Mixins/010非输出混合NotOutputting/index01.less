@@ -1,0 +1,19 @@
+//普通混合，它将生成一个样式//////////////////////////////////////
+.my-mixin {
+  color: red;
+}
+//注意这里的括号，它是非输出混合，不生成样式，只能被调用////////////////////////
+.my-other-mixin(){
+  background:white;
+}
+.some-class{
+  .my-mixin;
+  .my-other-mixin;
+  font-size:10px;
+}
+
+//注意混合与继承的区别///////////////////////////////////////////
+.extend-class{
+  &:extend(.my-mixin);
+  font-size:10px;
+}

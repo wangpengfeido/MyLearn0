@@ -1,0 +1,1 @@
+{"version":3,"sources":["..\\..\\..\\010let和const命令\\050顶层对象\\index01.js"],"names":[],"mappings":";;AAIA","file":"index01.js","sourcesContent":["/**\r\n * Created by w1036_000 on 2016/11/30.\r\n */\r\n//垫片库system.global保证在所有环境下都能拿到顶层对象global\r\nimport shim from 'system.global/shim';\r\n\r\n"]}

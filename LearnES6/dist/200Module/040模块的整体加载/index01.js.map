@@ -1,0 +1,1 @@
+{"version":3,"sources":["..\\..\\..\\200Module\\040模块的整体加载\\index01.js"],"names":["c","console","log"],"mappings":";;AAKA;;IAAYA,C;;;;AACZC,QAAQC,GAAR,CAAYF,CAAZ,E,CANA;;;AAGA;AACA","file":"index01.js","sourcesContent":["/**\r\n * Created by dell on 2016/12/5.\r\n */\r\n//这样写不行\r\n// import c from \"./module01.js\";\r\nimport * as c from \"./module01.js\";\r\nconsole.log(c);"]}

@@ -1,0 +1,11 @@
+//调用混合后，混合中定义的变量是可获取的
+.my-mixin(){
+  @color:red;
+}
+.some-class{
+  .my-mixin();
+  color:@color;
+}
+
+
+

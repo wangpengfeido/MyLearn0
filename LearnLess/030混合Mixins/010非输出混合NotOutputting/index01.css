@@ -1,0 +1,12 @@
+.my-mixin,
+.extend-class {
+  color: red;
+}
+.some-class {
+  color: red;
+  background: white;
+  font-size: 10px;
+}
+.extend-class {
+  font-size: 10px;
+}

@@ -1,0 +1,7 @@
+tr .bucket,
+.some-class {
+  color: blue;
+}
+.some-class {
+  font-size: 10px;
+}

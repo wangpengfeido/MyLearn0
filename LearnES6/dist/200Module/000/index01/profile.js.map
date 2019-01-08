@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../200Module/000/index01/profile.js"],"names":["firstName","lastName"],"mappings":";;;;;AAAA,IAAIA,YAAU,MAAd;AACA,IAAIC,WAAS,SAAb;QACQD,S,GAAAA,S;QAAUC,Q,GAAAA,Q","file":"profile.js","sourcesContent":["let firstName=\"wang\";\r\nlet lastName=\"pengfei\";\r\nexport {firstName,lastName};"]}

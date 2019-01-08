@@ -1,0 +1,1 @@
+{"version":3,"sources":["..\\..\\..\\..\\090函数的扩展\\050name属性\\000\\index01.js"],"names":["fn","console","log","name"],"mappings":";;AAAA;;;AAGA,SAASA,EAAT,GAAc,CAEb;AACDC,QAAQC,GAAR,CAAYF,GAAGG,IAAf","file":"index01.js","sourcesContent":["/**\r\n * Created by w1036_000 on 2016/11/30.\r\n */\r\nfunction fn() {\r\n\r\n}\r\nconsole.log(fn.name);"]}

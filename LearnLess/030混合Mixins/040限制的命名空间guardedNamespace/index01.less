@@ -1,0 +1,19 @@
+
+
+#some-namespace{
+  .some-mixin(@divColor) when (@divColor=red){
+    color:@divColor;
+  }
+  .some-mixin(@divColor) when(default()){
+    color:blue;
+  }
+}
+
+.some-class{
+  #some-namespace .some-mixin(red);
+  font-size: 10px;
+}
+.some-class-two{
+  #some-namespace .some-mixin(green);
+  font-size: 10px;
+}

@@ -1,0 +1,39 @@
+//带参数的mixin/////////////////////////////////////////////
+.my-mixin(@color){
+  color:@color;
+}
+.some-class-1{
+  .my-mixin(red);
+}
+.some-class-2{
+  .my-mixin(blue);
+}
+//带默认值参数///////////////////////////////////////
+.my-mixin-with-default(@fsize:10px){
+  font-size: @fsize;
+}
+.some-class-3{
+  .my-mixin-with-default;
+}
+.some-class-4{
+  .my-mixin-with-default();
+}
+.some-class-5{
+  .my-mixin-with-default(20px);
+}
+//无参的mixin//////////////////////////////////////////////
+.my-mixin-noparam(){
+  background-color:red;
+}
+.some-class-6{
+  .my-mixin-noparam();
+}
+
+
+
+
+
+
+
+
+

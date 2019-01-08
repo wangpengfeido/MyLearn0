@@ -1,0 +1,1 @@
+{"version":3,"sources":["..\\..\\..\\..\\030字符串的扩展\\100模版字符串\\000\\index01.js"],"names":["name","str"],"mappings":";;AAAA;;;AAGA,IAAIA,OAAK,MAAT;AACA,IAAIC,sBAAkBD,IAAtB","file":"index01.js","sourcesContent":["/**\r\n * Created by w1036_000 on 2016/11/30.\r\n */\r\nlet name=\"wang\";\r\nlet str=`my name is ${name}`;"]}

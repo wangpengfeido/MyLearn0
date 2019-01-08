@@ -1,0 +1,1 @@
+// es6存在6中变量声明方法：var/let/const/function/import/class

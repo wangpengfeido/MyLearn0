@@ -1,0 +1,1 @@
+{"version":3,"sources":["..\\..\\..\\..\\010let和const命令\\030const命令\\000\\index01.js"],"names":["PI"],"mappings":";;AAAA;;;AAGA,IAAMA,KAAG,IAAT;;AAEA;AACA;;AAEA;AACA","file":"index01.js","sourcesContent":["/**\r\n * Created by w1036_000 on 2016/11/30.\r\n */\r\nconst PI=3.14;\r\n\r\n//报错\r\n// PI=3\r\n\r\n//报错\r\n// const e;\r\n\r\n"]}

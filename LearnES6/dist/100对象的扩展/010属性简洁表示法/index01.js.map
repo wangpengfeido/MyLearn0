@@ -1,0 +1,1 @@
+{"version":3,"sources":["..\\..\\..\\100对象的扩展\\010属性的简介表示法\\index01.js"],"names":["a","obj","console","log"],"mappings":";;AAAA;;;AAGA,IAAIA,IAAE,KAAN;AACA,IAAIC,MAAI,EAACD,IAAD,EAAR;AACAE,QAAQC,GAAR,CAAYF,GAAZ","file":"index01.js","sourcesContent":["/**\r\n * Created by w1036_000 on 2016/12/2.\r\n */\r\nvar a='aaa';\r\nvar obj={a};\r\nconsole.log(obj);"]}

@@ -1,0 +1,13 @@
+//可以像函数一样使用混合
+.average(@x,@y){
+  @average:((@x+@y)/2);
+}
+.some-class{
+  .average(10px,20px);
+  font-size: @average;
+}
+
+
+
+
+
