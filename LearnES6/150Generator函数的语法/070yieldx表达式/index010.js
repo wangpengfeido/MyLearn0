@@ -1,5 +1,5 @@
 // yield* 表达式可以执行另一个generator函数，并可以在那个函数中的yield暂停
-// yield* 后面跟的是一个可遍历数据
+// yield* 后面跟的是一个可遍历数据的执行
 let inner = function* () {
     yield 'a';
     yield 'b';
