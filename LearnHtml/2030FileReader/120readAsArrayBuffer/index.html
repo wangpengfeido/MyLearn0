@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="fileItem" type="file" />
+    <script>
+      const input_file = document.querySelector('#fileItem');
+      input_file.addEventListener('change', () => {
+        if (input_file.files.length) {
+          const file = input_file.files[0];
+          
+          const fileReader = new FileReader();
+          fileReader.onload = () => {
+            console.log(fileReader.result);
+          };
+          fileReader.readAsArrayBuffer(file);
+        }
+      });
+    </script>
+  </body>
+</html>
