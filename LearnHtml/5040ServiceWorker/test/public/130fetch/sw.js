@@ -22,6 +22,6 @@ this.addEventListener('fetch', function(event) {
     // 可以组合使用。例如先进行网络请求，请求不到调用本地缓存,没有缓存自定义响应
     fetch(event.request)
       .then(success => success, error => caches.match(event.request))
-      .then(success => success, error => new Response('nothing'))
+      .then(success => success || new Response('nothing'), error => new Response('nothing'))
   );
 });
