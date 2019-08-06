@@ -1,0 +1,4 @@
+.box {
+  /* css中路径相对于当前css文件路径 */
+  background: url('./test.jpg');
+}
