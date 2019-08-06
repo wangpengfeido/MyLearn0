@@ -14,14 +14,21 @@
       padding: 10px;
       margin: 10px;
       background-color: #f00;
+      overflow-y: auto;
+    }
+
+    .two {
+      height: 600px;
     }
   </style>
 </head>
 <body>
-<div class="one"></div>
+<div class="one">
+  <div class="two"></div>
+</div>
 <script>
-  // offsetWidth和offsetHeight是包含内容、内边距、边框的值
-  console.log(document.querySelector('.one').offsetHeight);
+  // offsetWidth和offsetWidth并不包含滚动条的滚动长度，但是会包含滚动条的宽度
+  console.log(document.querySelector('.one').offsetHeight, document.querySelector('.one').offsetWidth);
 </script>
 </body>
 </html>

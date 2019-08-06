@@ -14,14 +14,21 @@
       padding: 10px;
       margin: 10px;
       background-color: #f00;
+      overflow-y: auto;
+    }
+
+    .two {
+      height: 600px;
     }
   </style>
 </head>
 <body>
-<div class="one"></div>
+<div class="one">
+  <div class="two"></div>
+</div>
 <script>
-  // offsetWidth和offsetHeight是包含内容、内边距、边框的值
-  console.log(document.querySelector('.one').offsetHeight);
+  // scrollWidth和scrollWidth表示该元素的容量值，包含padding，包含滚动条滚动长度
+  console.log(document.querySelector('.one').scrollHeight, document.querySelector('.one').scrollWidth);
 </script>
 </body>
 </html>
