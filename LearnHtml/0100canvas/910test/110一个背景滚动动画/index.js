@@ -30,8 +30,8 @@ class Anim {
     });
   }
   regetCanvasSize() {
-    this.canvas_width = this.canvas.clientWidth;
-    this.canvas_height = this.canvas.clientHeight;
+    this.canvas_width = this.canvas.offsetWidth;
+    this.canvas_height = this.canvas.offsetHeight;
     this.canvas.setAttribute('width', this.canvas_width);
     this.canvas.setAttribute('height', this.canvas_height);
   }

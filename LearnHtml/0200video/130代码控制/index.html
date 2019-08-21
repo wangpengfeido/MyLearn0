@@ -6,6 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <style>
+      .sth-fixed {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 30px;
+        height: 500px;
+        background-color: green;
+        z-index: 99999;
+      }
       .video {
         display: block;
         width: 300px;
@@ -15,16 +24,17 @@
     </style>
   </head>
   <body>
+    <div class="sth-fixed"></div>
     <div>
       视频：
       <button class="btn-play">播放</button>
     </div>
-    <video class="video" src="../test.mp4?sdf"></video>
+    <video class="video" src="../test.mp4?sdf" playsinline="true" webkit-playsinline="true"></video>
 
     <script>
-      const video = document.querySelector('.video');
-      const btnPlay = document.querySelector('.btn-play');
-      btnPlay.addEventListener('click', () => {
+      const video = document.querySelector(".video");
+      const btnPlay = document.querySelector(".btn-play");
+      btnPlay.addEventListener("click", () => {
         video.play();
       });
     </script>
