@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .video {
+        display: block;
+        width: 300px;
+        height: 200px;
+        background-color: blue;
+      }
+      video::-webkit-media-controls {
+        display: none !important;
+      }
+      video::-webkit-media-controls-enclosure {
+        display: none !important;
+      }
+      video::-webkit-media-controls-fullscreen-button {
+        display: none;
+      }
+      video::-webkit-media-controls-play-button {
+        display: none;
+      }
+      video::-webkit-media-controls-timeline {
+        display: none;
+      }
+      video::-webkit-media-controls-current-time-display {
+        display: none;
+      }
+      video::-webkit-media-controls-time-remaining-display {
+        display: none;
+      }
+      video::-webkit-media-controls-mute-button {
+        display: none;
+      }
+      video::-webkit-media-controls-toggle-closed-captions-button {
+        display: none;
+      }
+      video::-webkit-media-controls-volume-slider {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      视频：
+      <button class="btn-play">播放</button>
+    </div>
+    <video class="video" src="../test.mp4?sdf" poster="../test.png" webkit-playsinline="true" controls="false"></video>
+
+    <script>
+      const video = document.querySelector('.video');
+      const btnPlay = document.querySelector('.btn-play');
+      btnPlay.addEventListener('click', () => {
+        video.play();
+      });
+    </script>
+  </body>
+</html>

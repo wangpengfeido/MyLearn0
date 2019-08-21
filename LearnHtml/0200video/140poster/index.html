@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .video {
+        display: block;
+        width: 300px;
+        height: 200px;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      视频：
+      <button class="btn-play">播放</button>
+    </div>
+    <video class="video" src="../test.mp4?sdf" poster="../test.png"></video>
+
+    <script>
+      const video = document.querySelector('.video');
+      const btnPlay = document.querySelector('.btn-play');
+      btnPlay.addEventListener('click', () => {
+        video.play();
+      });
+    </script>
+  </body>
+</html>
