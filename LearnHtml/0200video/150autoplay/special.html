@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .video {
+        display: block;
+        width: 300px;
+        height: 200px;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      视频：
+      <button class="btn-play">播放</button>
+    </div>
+
+    <!-- 在 chrome for android（v53）和 safari for ios（10）以上 ,满足以下条件可自动播放。微信仍然无效-->
+    <!-- <video> 标签必须有 autoplay 的属性 -->
+    <!-- <video> 必须设置 muted 属性，或者本身它就不包含音轨 -->
+    <!-- 在 ios safari 中使用 playsinline 属性可以使得视频在网页中播放而不是全屏模式播放（全屏是需要手势触发的） -->
+    <!-- <video autoplay> 仅当这个元素在屏幕内可见范围内才会自动播放，比如滚动到视频位置，video 的 css 要 visible -->
+
+    <video class="video" src="../test.mp4?sdf" controls autoplay muted playsinline="true"></video>
+
+    <script>
+      const video = document.querySelector('.video');
+      const btnPlay = document.querySelector('.btn-play');
+      btnPlay.addEventListener('click', () => {
+        video.play();
+      });
+      video.addEventListener('play', () => {
+        setTimeout(() => {
+          // 一旦不符合条件以后，自动播放就会停止
+          video.muted = false;
+        }, 2000);
+      });
+    </script>
+  </body>
+</html>

@@ -6,15 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <style>
-      .sth-fixed {
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 30px;
-        height: 500px;
-        background-color: green;
-        z-index: 99999;
-      }
       .video {
         display: block;
         width: 300px;
@@ -24,19 +15,22 @@
     </style>
   </head>
   <body>
-    <div class="sth-fixed"></div>
     <div>
       视频：
       <button class="btn-play">播放</button>
     </div>
-    <video class="video" src="../test.mp4?sdf" playsinline="true" webkit-playsinline="true" controls></video>
+    <video class="video" src="../test.mp4?sdf" controls></video>
 
     <script>
-      const video = document.querySelector(".video");
-      const btnPlay = document.querySelector(".btn-play");
-      btnPlay.addEventListener("click", () => {
+      const video = document.querySelector('.video');
+      const btnPlay = document.querySelector('.btn-play');
+      btnPlay.addEventListener('click', () => {
         video.play();
       });
+      // 非用户触发的play方法在移动端大部分浏览器仍然无效。但在android uc等是有效的
+      setInterval(() => {
+        video.play();
+      }, 1000);
     </script>
   </body>
 </html>

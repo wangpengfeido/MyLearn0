@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .sth-fixed {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 30px;
+        height: 500px;
+        background-color: green;
+        z-index: 99999;
+      }
+      .video-box {
+        display: relative;
+      }
+      .video {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sth-fixed"></div>
+    <div>
+      视频：
+      <button class="btn-play">播放</button>
+    </div>
+    <div class="video-box">
+      <video
+        class="video"
+        src="../test.mp4?sdf"
+        controls
+        playsinline="true"
+        webkit-playsinline="true"
+        x5-video-player-fullscreen="true"
+        x5-video-player-type="h5"
+      ></video>
+    </div>
+
+    <!-- 测试结果： -->
+    <!-- Android使用x5-video-player-type="h5"可实现自动全屏播放。同时fixed元素仍浮动在视频上方 -->
+
+    <script>
+      const video = document.querySelector('.video');
+      const btnPlay = document.querySelector('.btn-play');
+      btnPlay.addEventListener('click', () => {
+        video.play();
+      });
+      // 退出全屏
+      video.addEventListener('ended', function() {
+        // IOS
+        // video.webkitExitFullScreen();
+
+        // Android
+        const temp = video.srcObject;
+        video.srcObject = new window.webkitMediaStream();
+        video.srcObject = temp;
+        video.load();
+
+        // else1
+        // let elem = video;
+        // if (elem.cancelFullScreen) {
+        //   elem.cancelFullScreen();
+        // } else if (elem.mozCancelFullScreen) {
+        //   elem.mozCancelFullScreen();
+        // } else if (elem.webkitCancelFullScreen) {
+        //   elem.webkitCancelFullScreen();
+        // } else if (elem.webkitExitFullScreen) {
+        //   elem.webkitExitFullScreen();
+        // }
+      });
+    </script>
+  </body>
+</html>
