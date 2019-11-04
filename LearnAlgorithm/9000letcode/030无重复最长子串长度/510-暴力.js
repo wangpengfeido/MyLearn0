@@ -1,3 +1,4 @@
+// 检查所有的字串
 // 这是一种不好的方法
 // 时间复杂度为O(n^3)
 
@@ -6,7 +7,8 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function(s) {
-  function allUnick(s, start, end) {
+  // 判断一个字串是否是无重复的
+  function allUnique(s, start, end) {
     let set = new Set();
     for (let i = 0; i < end; i++) {
       let char = s.charAt(i);

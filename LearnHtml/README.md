@@ -5,8 +5,7 @@
 * 4xxxx 线程
 * 6xxxx 图形绘制
 * 8xxxx 其他
-* xxxxx
-  * x9xxx 新兴技术
+* x9xxx 新兴技术
 
 
 
