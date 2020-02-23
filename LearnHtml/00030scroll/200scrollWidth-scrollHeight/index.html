@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>Document</title>
+  <style>
+    .one {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border: 10px solid black;
+      padding: 10px;
+      margin: 10px;
+      background-color: #f00;
+      overflow-y: auto;
+    }
+
+    .two {
+      height: 600px;
+    }
+  </style>
+</head>
+<body>
+<div class="one">
+  <div class="two"></div>
+</div>
+<script>
+  // scrollWidth和scrollHeight表示该元素的容量值，包含padding，包含滚动条滚动长度
+  console.log(document.querySelector('.one').scrollHeight, document.querySelector('.one').scrollWidth);
+</script>
+</body>
+</html>

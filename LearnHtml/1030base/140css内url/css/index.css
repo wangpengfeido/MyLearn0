@@ -1,4 +1,0 @@
-.box {
-  /* base对其无影响，css中路径仍然相对于当前css文件路径 */
-  background: url('./test.jpg');
-}

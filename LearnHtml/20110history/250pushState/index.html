@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="push-state">push state</button>
+    <button id="push-state-2">push state 2</button>
+    <script>
+      document.querySelector('#push-state').addEventListener('click', () => {
+        // pushState会改变地址栏中的URL，但不会刷新浏览器
+        // 但是在页面重新加载时，会加载这个URL
+        window.history.pushState({}, '', Math.random().toString());
+      });
+      document.querySelector('#push-state-2').addEventListener('click', () => {
+        window.history.pushState({}, '', '/aaa/bbb');
+      });
+    </script>
+  </body>
+</html>

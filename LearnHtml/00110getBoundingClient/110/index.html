@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .btn {
+        position: fixed;
+        top: 0;
+        right: 0;
+      }
+      .other {
+        width: 100px;
+        background-color: red;
+      }
+      .other.first {
+        height: 1000px;
+      }
+      .other.last {
+        height: 1000px;
+      }
+      .main {
+        width: 200px;
+        height: 200px;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn">get</button>
+    <div class="other first"></div>
+    <div class="main one"></div>
+    <div class="main two"></div>
+    <div class="other last"></div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
