@@ -1,4 +1,4 @@
-// （命令：tsc .\index.ts --types ./test ）
+/// <reference path="./test.d.ts"/>
 
 function myConsole(content: number) {
   console.log(content);

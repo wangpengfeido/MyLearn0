@@ -1,5 +1,5 @@
 // 可正常编译
-// declare const a: number;
+declare const a: number;
 
 // 不可正常编译
 // declare const a: string;

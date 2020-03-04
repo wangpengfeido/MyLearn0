@@ -1,5 +1,5 @@
 // 可正常编译
-// export declare const a: number;
+export declare const a: number;
 
 // 不可正常编译
 // export declare const a: string;
@@ -8,5 +8,5 @@
 // declare const a:number;
 
 // 可正常编译
-declare const a: number;
-export { a };
+// declare const a: number;
+// export { a };
