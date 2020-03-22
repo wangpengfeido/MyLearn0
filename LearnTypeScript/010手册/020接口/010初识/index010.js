@@ -1,13 +1,10 @@
-var N010020010010;
-(function (N010020010010) {
-    function test(param) {
-        console.log(param.attrOne, param.attrTwo);
-        //使用param.attrThree会报错
-        //console.log(param.attrOne, param.attrTwo, param.attrThree);
-        return { num: 3 };
-    }
-    var o = { attrOne: 'aaa', attrTwo: 1, attrThree: 'bbb' };
-    test(o);
-    //直接写一个带有attrThree属性的对象会报错
-    //test({attrOne: 'aaa', attrTwo: 1, attrThree: 'bbb'})；
-})(N010020010010 || (N010020010010 = {}));
+function test(param) {
+    console.log(param.a, param.b);
+    //使用不存在于接口I中的属性会报错
+    // console.log(param.c);
+    return { num: 3 };
+}
+var o = { a: 'aaa', b: 1, c: 'ccc' };
+test(o);
+//直接写一个带有attrThree属性的对象会报错
+//test({attrOne: 'aaa', attrTwo: 1, attrThree: 'bbb'})；

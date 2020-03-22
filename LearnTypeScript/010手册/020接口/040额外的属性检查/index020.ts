@@ -1,32 +1,22 @@
-namespace N010020010020 {
-    interface I {
-        attrOne: string;
-        attrTwo: number;
+interface I {
+    a: string;
+    b: number;
 
-        [popName: string]: any;           //字符串索引签名
-    }
-
-    function test(param: I): { num: number } {
-        //此时使用param.attrThree是允许的
-        console.log(param.attrOne, param.attrTwo,param.attrThree);
-
-        return {num: 3};
-    }
-
-    //允许
-    //test({attrOne: 'aaa', attrTwo: 1,});
-
-    //允许
-    //test({attrOne: 'aaa', attrTwo: 1, attrThree: 'bbb'});
-
-    //允许
-    //test({attrOne: 'aaa', attrTwo: 1, attrThree: 'bbb'} as I);
-
-    //允许
-    // let o = {attrOne: 'aaa', attrTwo: 1, attrThree: 'bbb'};
-    // test(o);
-
-    //允许
-    //test({attrOne: 'aaa', attrTwo: 1, attrThree: 'bbb',attrFour:'ccc'});
-
+    // 可以添加一个字符串索引签名
+    [popName: string]: any;
 }
+
+function test(param: I) {
+    // 可以访问索引的任意属性
+    console.log(param.a, param.b, param.c);
+}
+
+//允许
+test({ a: 'aaa', b: 1, });
+
+//允许
+test({ a: 'aaa', b: 1, c: 'bbb' });
+
+//允许
+test({ a: 'aaa', b: 1, c: 'bbb' } as I);
+
