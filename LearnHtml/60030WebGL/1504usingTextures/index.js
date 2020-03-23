@@ -94,20 +94,37 @@ function initShaderProgram(gl, vsSource, fsSource) {
   return shaderProgram;
 }
 
-function loadTexture(gl, image) {
-  const cubeTexture = gl.createTexture();
-  const cubeImage = new Image();
-  cubeImage.onload = function handleTextureLoaded() {
-    gl.bindTexture(gl.TEXTURE_2D, cubeTexture);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, cubeImage);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_NEAREST);
-    gl.generateMipmap(gl.TEXTURE_2D);
-    gl.bindTexture(gl.TEXTURE_2D, null);
-  };
-  cubeImage.src = image;
+// 加载图片，加载完成后拷贝到纹理
+function loadTexture(gl, url) {
+  // 创建纹理对象
+  const texture = gl.createTexture();
+  gl.bindTexture(gl.TEXTURE_2D, texture);
 
-  return cubeTexture;
+  // 在图片加载之前先向纹理填充1个像素，图片加载完成后再用图片填充纹理
+  const level = 0;
+  const internalFormat = gl.RGBA;
+  const width = 1;
+  const height = 1;
+  const border = 0;
+  const srcFormat = gl.RGBA;
+  const srcType = gl.UNSIGNED_BYTE;
+  const pixel = new Uint8Array([0, 0, 255, 255]);
+  gl.texImage2D(gl.TEXTURE_2D, level, internalFormat, width, height, border, srcFormat, srcType, pixel);
+
+  const image = new Image();
+  image.onload = function() {
+    // 绑定纹理（指定当前操作纹理）
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    // 重新填充纹理
+    gl.texImage2D(gl.TEXTURE_2D, level, internalFormat, srcFormat, srcType, image);
+    // 设置纹理参数
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+  };
+  image.src = url;
+
+  return texture;
 }
 
 function initBuffers(gl) {
