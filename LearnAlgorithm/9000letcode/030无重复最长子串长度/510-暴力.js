@@ -6,14 +6,16 @@
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function(s) {
+var lengthOfLongestSubstring = function (s) {
   // 判断一个字串是否是无重复的
-  function allUnique(s, start, end) {
+  function allUnique(str) {
     let set = new Set();
-    for (let i = 0; i < end; i++) {
-      let char = s.charAt(i);
+    for (let i = 0; i < str.length; i++) {
+      let char = str.charAt(i);
       if (set.has(char)) {
         return false;
+      } else {
+        set.add(char);
       }
     }
     return true;
@@ -21,13 +23,17 @@ var lengthOfLongestSubstring = function(s) {
   let ans = 0;
   for (let i = 0, len = s.length; i < len; i++) {
     for (let j = i + 1; j <= len; j++) {
-      
+      const subStr = s.substring(i, j);
+      if (allUnique(subStr)) {
+        ans = Math.max(ans, subStr.length);
+      }
     }
   }
+  return ans;
 };
 
-// console.log(lengthOfLongestSubstring('abcabcbb'));
-// console.log(lengthOfLongestSubstring('bbbbb'));
-// console.log(lengthOfLongestSubstring('pwwkew'));
-// console.log(lengthOfLongestSubstring(''));
-console.log(lengthOfLongestSubstring(" "));
+console.log(lengthOfLongestSubstring('abcabcbb'));
+console.log(lengthOfLongestSubstring('bbbbb'));
+console.log(lengthOfLongestSubstring('pwwkew'));
+console.log(lengthOfLongestSubstring(''));
+console.log(lengthOfLongestSubstring(' '));
