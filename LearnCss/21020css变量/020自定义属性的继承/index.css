@@ -1,0 +1,11 @@
+/* 如果在一个给定的元素上没有自定义属性值，在其父元素上的值会被使用 */
+
+:root {
+  --var-color: blue;
+}
+
+.test {
+  width: 100px;
+  height: 100px;
+  background-color: var(--var-color);
+}
