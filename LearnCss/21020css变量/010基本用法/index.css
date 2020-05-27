@@ -1,0 +1,8 @@
+.test {
+  /* 声明自定义属性，使用 --** 的格式作为名字 */
+  --var-color: blue;
+  width: 100px;
+  height: 100px;
+  /* 使用 var() 调用变量 */
+  background-color: var(--var-color);
+}
