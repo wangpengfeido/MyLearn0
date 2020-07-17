@@ -6,7 +6,16 @@
  */
 var longestPalindrome = function (s) {
   function isPalindromic(s) {
-    return s === s.split('').reverse().join('');
+    let i = 0,
+      j = s.length - 1;
+    while (i < j) {
+      if (s[i] !== s[j]) {
+        return false;
+      }
+      i++;
+      j--;
+    }
+    return true;
   }
 
   let maxStr = '';
