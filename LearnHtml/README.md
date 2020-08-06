@@ -3,7 +3,7 @@
 * 2xxxx 浏览器
 * 3xxxx 数据
 * 4xxxx 线程
-* 6xxxx 图形绘制
+* 6xxxx 图形
 * 8xxxx 其他
 * x9xxx 新兴技术
 

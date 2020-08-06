@@ -30,5 +30,6 @@ idbRequest.addEventListener('upgradeneeded', function() {
     // 创建索引，三个参数分别为索引名称、索引所在的属性、配置对象
     objectStore.createIndex('b', 'b', { unique: false });
     objectStore.createIndex('c', 'c', { unique: false });
+    // wpf注：所谓索引，因为indexdb的数据是对象，索引就是对象的key
   }
 });

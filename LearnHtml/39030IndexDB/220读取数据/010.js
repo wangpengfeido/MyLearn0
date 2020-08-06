@@ -30,7 +30,8 @@ function read() {
   var request = db
     .transaction(['one'], 'readwrite')
     .objectStore('one')
-    // 通过get()方法，读取数据
+    // 通过get()方法，读取数据。
+    // 这里查找的是主键的值
     .get('2222');
   request.onsuccess = function(event) {
     console.log('read success');

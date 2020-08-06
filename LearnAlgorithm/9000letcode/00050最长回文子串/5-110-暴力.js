@@ -1,23 +1,25 @@
 // 暴力求解
+// 检测所有子串
+// 时间复杂度为 O(n^3)
+
+function isPalindromic(s) {
+  let i = 0,
+    j = s.length - 1;
+  while (i < j) {
+    if (s[i] !== s[j]) {
+      return false;
+    }
+    i++;
+    j--;
+  }
+  return true;
+}
 
 /**
  * @param {string} s
  * @return {string}
  */
 var longestPalindrome = function (s) {
-  function isPalindromic(s) {
-    let i = 0,
-      j = s.length - 1;
-    while (i < j) {
-      if (s[i] !== s[j]) {
-        return false;
-      }
-      i++;
-      j--;
-    }
-    return true;
-  }
-
   let maxStr = '';
   let maxLength = 0;
   for (let i = 0; i < s.length; i++) {

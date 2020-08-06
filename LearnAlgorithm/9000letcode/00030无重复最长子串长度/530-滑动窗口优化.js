@@ -17,6 +17,7 @@ var lengthOfLongestSubstring = function (s) {
     const charIndex = map.get(char);
     if (charIndex !== undefined) {
       // 这里Math.max的原因是重复可能是滑动窗口之前的重复，这种情况不能让i前移
+      // 因为滑过的字符我们并没有从map中移除
       i = Math.max(charIndex + 1, i);
     }
     ans = Math.max(ans, j - i + 1);
