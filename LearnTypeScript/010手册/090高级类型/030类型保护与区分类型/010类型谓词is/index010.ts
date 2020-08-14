@@ -1,22 +1,23 @@
 class Fish {
   breath() {
-    console.log('breath...');
+    console.log("breath...");
   }
   swim() {
-    console.log('swim.....')
+    console.log("swim.....");
   }
 }
 
 class Bird {
   breath() {
-    console.log('breath...');
+    console.log("breath...");
   }
   fly() {
-    console.log('fly.....')
+    console.log("fly.....");
   }
 }
 
-// 返回一个类型谓词（pet is Fish），它将类型缩减为具体类型
+// 返回一个类型谓词（pet is Fish）
+// 函数用于类型保护，调用该函数将类型缩减为具体类型
 function isFish(pet: Fish | Bird): pet is Fish {
   return (<Fish>pet).swim !== undefined;
 }
@@ -35,4 +36,3 @@ if (isFish(tom)) {
   // 还知道这里的tom必定是Bird类型
   tom.fly();
 }
-

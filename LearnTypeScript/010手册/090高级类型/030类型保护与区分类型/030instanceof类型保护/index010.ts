@@ -24,7 +24,7 @@ if (1 + 1 === 2) {
   tom = new Bird();
 }
 
-// instanceof 将类型细化为Fish类型
+// instanceof 将类型细化为 Fish 类型
 if (tom instanceof Fish) {
   tom.swim();
 }

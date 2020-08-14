@@ -1,18 +1,18 @@
 class Fish {
   breath() {
-    console.log('breath...');
+    console.log("breath...");
   }
   swim() {
-    console.log('swim.....')
+    console.log("swim.....");
   }
 }
 
 class Bird {
   breath() {
-    console.log('breath...');
+    console.log("breath...");
   }
   fly() {
-    console.log('fly.....')
+    console.log("fly.....");
   }
 }
 
@@ -21,6 +21,9 @@ class Bird {
 
 function doSth(someBody: Fish | Bird) {
   someBody.breath();
+
+  // 只能调用共有成员，不能调用仅属于一个类型的成员
+  // someBody.swim();
 }
 
 let tom = new Fish();
