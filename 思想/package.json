@@ -1,5 +1,5 @@
 {
-  "name": "lt",
+  "name": "think",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "typescript": "^3.9.7"
+  "dependencies": {
+    "lodash": "^4.17.20"
   }
 }
