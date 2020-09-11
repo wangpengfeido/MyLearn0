@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <div>this is a.</div>
+      <div>
+        <button id="btn-post-message">postMessage to parent</button>
+      </div>
+    </div>
+
+    <script>
+      window.addEventListener("message", (event) => {
+        console.log("message from parent:", event.origin, event.data);
+      });
+
+      const el_btn = document.querySelector("#btn-post-message");
+      el_btn.addEventListener("click", () => {
+        parent.postMessage("hello", "*");
+      });
+    </script>
+  </body>
+</html>

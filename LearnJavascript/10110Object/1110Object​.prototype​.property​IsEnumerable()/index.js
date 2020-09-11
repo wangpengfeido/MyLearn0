@@ -1,4 +1,4 @@
-const obj = require('./obj.js');
+const obj = require('./obj.js.js');
 
 // prototypeIsEnumerable可以判断（自有）属性是否是可枚举的
 

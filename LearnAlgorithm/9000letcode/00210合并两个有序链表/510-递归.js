@@ -6,6 +6,9 @@
     边界情况是 l1,l2 一者为空时直接返回另一者
  */
 
+ // 时间复杂度 O(m+n)
+// 空间复杂度 O(m+n)
+
 const { ListNode, arrayToList, listToArray } = require("./util.js");
 
 /**

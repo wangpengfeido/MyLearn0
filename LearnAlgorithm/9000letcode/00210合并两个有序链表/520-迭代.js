@@ -1,6 +1,9 @@
 // 在 ./110.js 的基础上优化而来。
 // 增加了头节点，省去了第一次合并的空节点检查
 
+// 时间复杂度 O(m+n)
+// 空间复杂度 O(1)
+
 const { ListNode, arrayToList, listToArray } = require("./util.js");
 
 /**
@@ -18,20 +21,18 @@ const { ListNode, arrayToList, listToArray } = require("./util.js");
 var mergeTwoLists = function (l1, l2) {
   let preNode = new ListNode(-Infinity);
   let resTemp = preNode;
-  let temp1 = l1,
-    temp2 = l2;
-  while (temp1 && temp2) {
-    if (temp1.val <= temp2.val) {
-      resTemp.next = temp1;
-      temp1 = temp1.next;
+  while (l1 && l2) {
+    if (l1.val <= l2.val) {
+      resTemp.next = l1;
+      l1 = l1.next;
     } else {
-      resTemp.next = temp2;
-      temp2 = temp2.next;
+      resTemp.next = l2;
+      l2 = l2.next;
     }
     resTemp = resTemp.next;
   }
 
-  resTemp.next = temp1 ? temp1 : temp2;
+  resTemp.next = l1 ? l1 : l2;
 
   return preNode.next;
 };

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <iframe id="test-iframe" src="http://192.168.31.193:10081/a.html"></iframe>
+    <div>
+      <button id="btn-post-message">postMessage to child</button>
+    </div>
+
+    <script>
+      const el_testIframe = document.querySelector("#test-iframe");
+      const childWindow = el_testIframe.contentWindow;
+
+      const el_btn = document.querySelector("#btn-post-message");
+      el_btn.addEventListener("click", () => {
+        childWindow.postMessage("hello", "*");
+      });
+
+      window.addEventListener("message", (event) => {
+        console.log("message from child:", event.origin, event.data);
+      });
+    </script>
+  </body>
+</html>

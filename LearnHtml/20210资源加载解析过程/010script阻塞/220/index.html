@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="text" style="color: orange"></div>
+    <script>
+      const dom_text = document.querySelector(".text");
+      dom_text.innerHTML = "运行脚本...<br/>";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        dom_text.innerHTML += "DOMContentLoaded...<br/>";
+      });
+
+      window.addEventListener("load", () => {
+        dom_text.innerHTML += "onload...<br/>";
+      });
+    </script>
+
+    <div>something before load...</div>
+    <script async src="../../../assets/script_2m.js"></script>
+    <div>something after load...</div>
+    <script src="../../../assets/script_1k.js"></script>
+  </body>
+</html>

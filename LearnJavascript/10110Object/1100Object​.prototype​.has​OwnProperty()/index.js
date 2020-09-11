@@ -1,4 +1,4 @@
-const obj = require('./0100util-obj.js');
+const obj = require('./0100util-obj.js.js');
 
 // hasOwnProperty可以判断=属性是否是自有属性，包括（可枚举的与不可枚举的）
 
