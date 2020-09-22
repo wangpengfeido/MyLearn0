@@ -18,23 +18,22 @@ var threeSum = function (nums) {
     }
 
     const target = -nums[first];
-    for (
-      let second = first + 1, third = nums.length - 1;
-      second < nums.length;
-      second++
-    ) {
+    let second = first + 1,
+      third = nums.length - 1;
+    while (second < third) {
+      // 保证 second 不重复
       if (second > first + 1 && nums[second] === nums[second - 1]) {
+        second++;
         continue;
-      }
-
-      while (second < third && nums[second] + nums[third] > target) {
-        third--;
-      }
-      if (second >= third) {
-        break;
       }
       if (nums[second] + nums[third] === target) {
         ans.push([nums[first], nums[second], nums[third]]);
+        second++;
+        third--;
+      } else if (nums[second] + nums[third] < target) {
+        second++;
+      } else {
+        third--;
       }
     }
   }
@@ -47,5 +46,3 @@ console.log(
   [-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6],
   threeSum([-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6])
 );
-
-
