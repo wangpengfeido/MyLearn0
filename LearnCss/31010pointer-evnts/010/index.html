@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <div>event-target 指定元素和svg图形在什么情况下可以响应鼠标事件</div>
+      <div>
+        none：永远不能。鼠标事件会透过元素响应在下面的元素上。但是如果其子元素设置了其他的值，该元素仍然能够在冒泡或捕获阶段响应到事件
+      </div>
+    </div>
+    <fieldset class="radio-group">
+      <label
+        ><input
+          name="pointer-events"
+          type="radio"
+          value="inherit"
+        />inherit</label
+      >
+      <label
+        ><input
+          name="pointer-events"
+          type="radio"
+          value="initial"
+        />initial</label
+      >
+      <label
+        ><input name="pointer-events" type="radio" value="unset" />unset</label
+      >
+      <label
+        ><input name="pointer-events" type="radio" value="auto" />auto</label
+      >
+      <label
+        ><input name="pointer-events" type="radio" value="none" />none</label
+      >
+    </fieldset>
+    <div
+      class="parent"
+      style="width: 400px; height: 400px; background-color: green"
+    >
+      <div
+        class="child"
+        style="
+          width: 200px;
+          height: 200px;
+          background-color: blue;
+          position: relative;
+          left: 300px;
+        "
+      >
+        <div
+          class="child-child"
+          style="width: 50px; height: 50px; background-color: red"
+        >
+          inherit
+        </div>
+        <div
+          class="child-child-auto"
+          style="
+            pointer-events: auto;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: relative;
+            left: 150px;
+          "
+        >
+          auto
+        </div>
+      </div>
+    </div>
+    <script>
+      const dom_parent = document.querySelector(".parent");
+      const dom_child = document.querySelector(".child");
+      const dom_child_child = document.querySelector(".child-child");
+      const dom_child_child_auto = document.querySelector(".child-child-auto");
+
+      dom_parent.addEventListener("click", () => {
+        alert("parent received click event.");
+      });
+      dom_child.addEventListener("click", () => {
+        alert("child received click event.");
+      });
+      dom_child_child.addEventListener("click", () => {
+        alert("child-child received click event.");
+      });
+      dom_child_child_auto.addEventListener("click", () => {
+        alert("child-child-auto received click event.");
+      });
+
+      document
+        .querySelector(".radio-group")
+        .addEventListener("change", (event) => {
+          console.log(event.target, event.target.value);
+          dom_child.style.pointerEvents = event.target.value;
+        });
+    </script>
+  </body>
+</html>

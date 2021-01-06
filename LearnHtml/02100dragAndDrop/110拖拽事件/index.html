@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="drag" style="border: 1px solid;">
+      <div>选中文字</div>
+      <div
+        draggable="true"
+        style="width: 200px; height: 50px; background-color: green"
+      >
+        draggable 属性元素
+      </div>
+      <div><a href="void 0" target="_blank">链接</a></div>
+      <div>
+        图片：
+        <img src="../../assets/img_100k.bmp" />
+      </div>
+    </div>
+    <div
+      id="drop"
+      style="width: 500px; height: 200px; background-color: yellow"
+    >
+      listen drag enter
+    </div>
+    <div
+      id="droppable"
+      style="width: 500px; height: 200px; background-color: yellowgreen"
+    >
+      droppable（dragenter 和 dragover 被 preventDefault）
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+  <script>
+    const dom_drag = document.querySelector("#drag");
+    const dom_drop = document.querySelector("#drop");
+    const dom_droppable = document.querySelector("#droppable");
+
+    // 拖拽时触发
+    dom_drag.addEventListener(
+      "drag",
+      _.debounce(
+        (event) => {
+          console.log("on drag:", event);
+        },
+        500,
+        { leading: true }
+      )
+    );
+
+    // 拖拽开始时触发
+    dom_drag.addEventListener("dragstart", (event) => {
+      console.log("on drag start:", event);
+    });
+
+    // 拖拽结束时触发
+    dom_drag.addEventListener("dragend", (event) => {
+      console.log("on drag end:", event);
+    });
+
+    // 拖拽元素进入该元素时触发
+    dom_drop.addEventListener("dragenter", (event) => {
+      console.log("======== on drag enter:", event);
+    });
+
+    // 拖拽元素离开该元素时触发
+    dom_drop.addEventListener("dragleave", (event) => {
+      console.log("======== on drag leave:", event);
+    });
+
+    // 拖拽元素在该元素上时触发（100毫秒触发一次）
+    dom_drop.addEventListener(
+      "dragover",
+      _.debounce(
+        (event) => {
+          console.log("======== on drag over:", event);
+        },
+        500,
+        { leading: true }
+      )
+    );
+
+    // 拖拽在可放置元素上释放时触发
+    dom_droppable.addEventListener("drop", (event) => {
+      console.log("------------------------------ on drop:", event);
+    });
+    dom_droppable.addEventListener("dragenter", (event) => {
+      event.preventDefault();
+    });
+    dom_droppable.addEventListener("dragover", (event) => {
+      event.preventDefault();
+    });
+  </script>
+</html>
