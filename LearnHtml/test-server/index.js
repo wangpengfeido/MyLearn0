@@ -4,6 +4,11 @@ const express = require("express");
 
 const app = express();
 
+app.all('*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
+
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
@@ -16,7 +21,7 @@ const options = {
 };
 
 const server = https.createServer(options, app);
-const port = 3011;
+const port = 3111;
 server.listen(port, function () {
   console.log(`listening ${port}`);
 });

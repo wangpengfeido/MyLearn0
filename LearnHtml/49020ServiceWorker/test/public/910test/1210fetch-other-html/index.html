@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>test fetch</div>
+
+    <!-- <div><button id="fetch">fetch</button></div> -->
+    <!-- <script>
+      document.querySelector("#fetch").addEventListener("click", () => {
+        fetch(
+          "https://localhost:3011/910test/1210fetch-other-html/sdfsdfsd"
+        );
+      });
+    </script> -->
+
+    <script>
+      navigator.serviceWorker
+        .register("/910test/1210fetch-other-html/sw.js")
+        .then(
+          () => {
+            console.log("registration succeeded");
+          },
+          (error) => {
+            console.log("registration error");
+          }
+        );
+    </script>
+  </body>
+</html>
