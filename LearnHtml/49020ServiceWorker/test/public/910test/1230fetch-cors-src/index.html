@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div>test fetch cors src</div>
+  <div>
+    <img src="https://localhost:3111/img_100k.bmp" style="width:100px;height:100px" />
+  </div>
+
+  <div><button id="fetch">fetch</button></div>
+  <script>
+    document.querySelector("#fetch").addEventListener("click", () => {
+      fetch("https://localhost:3111/img_100k.bmp");
+    });
+  </script>
+
+  <script>
+    navigator.serviceWorker
+      .register("/910test/1230fetch-cors-src/sw.js")
+      .then(
+        () => {
+          console.log("registration succeeded");
+        },
+        (error) => {
+          console.log("registration error");
+        }
+      );
+  </script>
+</body>
+
+</html>
