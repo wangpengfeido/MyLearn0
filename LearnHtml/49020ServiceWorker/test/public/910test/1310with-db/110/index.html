@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div>test db</div>
+
+  <div><button id="fetch">fetch</button></div>
+
+  <script>
+    navigator.serviceWorker
+      .register("/910test/1310with-db/sw.js")
+      .then(
+        () => {
+          console.log("registration succeeded");
+        },
+        (error) => {
+          console.log("registration error");
+        }
+      );
+  </script>
+
+  <script>
+    document.querySelector("#fetch").addEventListener("click", () => {
+      fetch('/910test/1310with-db/aaaaaaaaaaa');
+    });
+  </script>
+</body>
+
+</html>

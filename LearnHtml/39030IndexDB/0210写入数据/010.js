@@ -14,7 +14,7 @@ idbRequest.addEventListener('success', function(event) {
   db.addEventListener('error', function() {});
 });
 
-idbRequest.addEventListener('upgradeneeded', function() {
+idbRequest.addEventListener('upgradeneeded', function(event) {
   console.log('upgrade');
   db = event.target.result;
 

@@ -15,7 +15,9 @@ idbRequest.addEventListener('success', function(event) {
 });
 
 idbRequest.addEventListener('upgradeneeded', function() {
+  // 在需要upgrade时，先被upgrade，然后success
   console.log('upgrade');
+  
   db = event.target.result;
 
   // 在upgradeneeded事件中对更新的数据库进行操作
