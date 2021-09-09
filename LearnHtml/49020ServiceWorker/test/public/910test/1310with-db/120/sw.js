@@ -12,9 +12,9 @@ function doDb() {
     });
     idbRequest.addEventListener('upgradeneeded', function (event) {
       console.log('=========db upgrade');
-      db = event.target.result;
-      if (!db.objectStoreNames.contains('one')) {
-        db.createObjectStore('one', { keyPath: 'a' });
+      let _db = event.target.result;
+      if (!_db.objectStoreNames.contains('one')) {
+        _db.createObjectStore('one', { keyPath: 'a' });
       }
     });
   });
