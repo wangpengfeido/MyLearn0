@@ -26,10 +26,8 @@ this.addEventListener('install', function (event) {
 this.addEventListener('activate', function (event) {
   console.log('------------activate');
   self.clients.claim();
-  fetch(`/called-activate`);
   event.waitUntil(
     (async () => {
-      console.log('111111111111');
       const startTime = Date.now();
       db = await doDb();
       const spendTime = Date.now() - startTime;
@@ -40,7 +38,6 @@ this.addEventListener('activate', function (event) {
 });
 
 this.addEventListener('fetch', function (event) {
-  console.log(self.db);
   if (event.request.url.includes('/910test/1310with-db/120/console-has-db')) {
     event.respondWith(fetch(`/fetch/console-has-db/${JSON.stringify(!!db)}`));
   } else if (event.request.url.includes('/910test/1310with-db/120/open-db')) {
