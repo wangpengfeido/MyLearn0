@@ -3,31 +3,31 @@ let indexedDB =
 
 // 实验初次初始化数据库耗时约300ms
 // 初始化已存在数据库耗时约20ms
-console.time('initDb');
-let idbRequest = indexedDB.open('test');
+// console.time('initDb');
+// let idbRequest = indexedDB.open('test');
 
-idbRequest.addEventListener('error', function (event) {
-  console.log('error');
-});
+// idbRequest.addEventListener('error', function (event) {
+//   console.log('error');
+// });
 
-let db;
-idbRequest.addEventListener('success', function (event) {
-  console.log('success');
-  db = event.target.result;
+// let db;
+// idbRequest.addEventListener('success', function (event) {
+//   console.log('success');
+//   db = event.target.result;
 
-  db.addEventListener('error', function () {});
-  console.timeEnd('initDb');
-});
+//   db.addEventListener('error', function () {});
+//   console.timeEnd('initDb');
+// });
 
-idbRequest.addEventListener('upgradeneeded', function (event) {
-  console.log('upgrade');
-  db = event.target.result;
+// idbRequest.addEventListener('upgradeneeded', function (event) {
+//   console.log('upgrade');
+//   db = event.target.result;
 
-  let objectStore;
-  if (!db.objectStoreNames.contains('one')) {
-    objectStore = db.createObjectStore('one', { keyPath: 'id' });
-  }
-});
+//   let objectStore;
+//   if (!db.objectStoreNames.contains('one')) {
+//     objectStore = db.createObjectStore('one', { keyPath: 'id' });
+//   }
+// });
 
 let data = [];
 for (let i = 0; i < 100000; i++) {
@@ -89,14 +89,24 @@ document.querySelector('.add-with-open').addEventListener('click', function () {
 });
 
 function open(params) {
-  // 实验每次open耗时约0.13ms
-  // 耗时要小于首次open，也就是说数据库被open过一次之后，后面的open会快很多
+  // 实验结果
+  // 首次建库耗时约30ms
+  // 首次open耗时约2~3ms
+  // 二次open耗时约0.5~1ms
+  // 二次耗时要小于首次open，也就是说数据库被open过一次之后，后面的open会快很多
   console.time('open');
   let idbRequest = indexedDB.open('test');
   idbRequest.addEventListener('success', function (event) {
     let db = event.target.result;
+    console.timeEnd('open');
   });
-  console.timeEnd('open');
+  idbRequest.addEventListener('upgradeneeded', function (event) {
+    db = event.target.result;
+    let objectStore;
+    if (!db.objectStoreNames.contains('one')) {
+      objectStore = db.createObjectStore('one', { keyPath: 'id' });
+    }
+  });
 }
 
 document.querySelector('.open').addEventListener('click', function () {
