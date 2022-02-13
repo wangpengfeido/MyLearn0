@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" href="data:;base64,=">
+  <title>credentials</title>
+</head>
+
+<body>
+
+  <div>
+    <div>credentials修改：</div>
+  </div>
+
+  <div><button id="fetch">fetch</button></div>
+  <script>
+    document.querySelector("#fetch").addEventListener("click", async () => {
+      const res = await fetch(
+        // "https://localhost:3011/test-fetch",
+        "https://localhost:3111/test-fetch",
+        {
+          // credentials: 'omit',
+          credentials: 'same-origin',
+          // credentials: 'include',
+        }
+      );
+      const text = await res.text();
+      console.log('aaaaaaaaa', text)
+    });
+  </script>
+
+  <script>
+    navigator.serviceWorker
+      .register("/910test/3320change-credentials/sw.js")
+      .then(
+        () => {
+          console.log("registration succeeded");
+        },
+        (error) => {
+          console.log("registration error");
+        }
+      );
+  </script>
+</body>
+
+</html>
