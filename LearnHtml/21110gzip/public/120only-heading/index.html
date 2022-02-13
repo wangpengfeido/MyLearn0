@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>only heading</title>
+  </head>
+  <body>
+    <div>
+      <button id="fetch">fetch</button>
+    </div>
+    <div>
+      <button id="fetch-catch-err">fetch 捕获错误</button>
+    </div>
+
+    <script>
+      // 如果使用了gzip头，但body未使用gzip编码，会报错 net::ERR_CONTENT_DECODING_FAILED 200 (OK)
+      document.querySelector("#fetch").addEventListener("click", async () => {
+        const fetchRes = await fetch("/api/only-gzip-heading");
+        const txt = await fetchRes.text();
+        console.log(txt);
+      });
+
+      document
+        .querySelector("#fetch-catch-err")
+        .addEventListener("click", async () => {
+          let fetchRes;
+          try {
+            fetchRes = await fetch("/api/only-gzip-heading");
+            console.log(
+              `status:${fetchRes.status};ok:${fetchRes.ok};body:`,
+              fetchRes.body,
+              ";"
+            );
+          } catch (e) {
+            // 这里捕获不到错误
+            console.log("-----------------1", e);
+          }
+
+          // 读取流会失败
+          // fetchRes.body.getReader().closed.catch((e) => {
+          //   console.log("----------------2", e);
+          // });
+
+          // 执行blob时可以捕获到错误
+          try {
+            // 注意，blob()只能被执行一次。因此如果只检查错误，可以clone()一下。
+            const blob = await fetchRes.clone().blob();
+            console.log(`blob:${blob}`);
+          } catch (e) {
+            console.log("------------------2", e);
+          }
+        });
+    </script>
+  </body>
+</html>
