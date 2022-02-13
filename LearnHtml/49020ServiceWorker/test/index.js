@@ -4,11 +4,18 @@ const express = require('express');
 
 const app = express();
 
+app.all('**', function (req, res, next) {
+  if (req.query.worker_allowed) {
+    res.header('Service-Worker-Allowed', '/');
+  }
+  next();
+});
+
 app.use(express.static('public'));
 
 app.get('/**', (req, res) => {
-  console.log('be called.hello world.', req.path);
-  res.send('hello world');
+  console.log('sw test service be called.', req.path);
+  res.send('sw teat service response');
 });
 
 const options = {

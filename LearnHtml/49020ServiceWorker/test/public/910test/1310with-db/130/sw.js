@@ -1,7 +1,5 @@
-let db;
-let temp;
 // 首次调用必为false。它是在active之前调用的
-fetch(`/outer/hasdb/${JSON.stringify(!!db)}`);
+fetch(`/outer/hasdb/${JSON.stringify(!!self.__db)}`);
 
 function doDb() {
   return new Promise((resolve) => {
@@ -30,8 +28,7 @@ this.addEventListener('activate', function (event) {
   event.waitUntil(
     (async () => {
       const startTime = Date.now();
-      db = await doDb();
-      temp = 1;
+      self.__db = await doDb();
       const spendTime = Date.now() - startTime;
       await fetch(`/called-activate/${JSON.stringify(spendTime)}`);
       return;
@@ -40,18 +37,13 @@ this.addEventListener('activate', function (event) {
 });
 
 this.addEventListener('fetch', function (event) {
-  if (event.request.url.includes('/910test/1310with-db/120/console-has-db')) {
-    event.respondWith(
-      fetch(`/fetch/console-has-db/${JSON.stringify(!!db)}/temp/${JSON.stringify(!!temp)}`)
-    );
-  } else if (event.request.url.includes('/910test/1310with-db/120/open-db')) {
+  if (event.request.url.includes('/910test/1310with-db/130/console-has-db')) {
+    event.respondWith(fetch(`/fetch/console-has-db/${JSON.stringify(!!self.__db)}`));
+  } else if (event.request.url.includes('/910test/1310with-db/130/open-db')) {
     event.respondWith(
       (async () => {
         const startTime = Date.now();
-        console.time('aaa');
-        db = await doDb();
-        console.timeEnd('aaa');
-        temp = 1;
+        self.__db = await doDb();
         const spendTime = Date.now() - startTime;
         return await fetch(`/fetch/opendb/${JSON.stringify(spendTime)}`);
       })()

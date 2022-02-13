@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" href="data:;base64,=">
+  <title>credentials</title>
+</head>
+
+<body>
+
+  <div>
+    <div>
+      scope：同一scope下不允许注册多个sw。不同scope允许注册不同sw。
+    </div>
+    <div>
+      scope 配置必须在 sw.js 路径之下。除非 sw.js 文件带了 Service-Worker-Allowed 响应头。
+    </div>
+  </div>
+
+  <div><button id="fetch">fetch</button></div>
+  <script>
+    document.querySelector("#fetch").addEventListener("click", async () => {
+      const res = await fetch(
+        "https://localhost:3011/test-fetch",
+      );
+      const text = await res.text();
+      console.log('aaaaaaaaa', text)
+    });
+  </script>
+
+  <script>
+    navigator.serviceWorker
+      .register("/910test/0110registration-scope/sw.js", { scope: undefined })
+      // .register("/910test/0110registration-scope/sw.js", { scope: '/910test/0110registration-scope/a/b' })
+      // .register("/910test/0110registration-scope/sw.js", { scope: '/' })
+      // .register("/910test/0110registration-scope/sw.js?worker_allowed=1", { scope: '/' })
+      .then(
+        () => {
+          console.log("registration succeeded");
+        },
+        (error) => {
+          console.log("registration error");
+        }
+      );
+
+    // navigator.serviceWorker
+    //   .register("/910test/0110registration-scope/sw2.js")
+    //   .then(
+    //     () => {
+    //       console.log("registration succeeded");
+    //     },
+    //     (error) => {
+    //       console.log("registration error");
+    //     }
+    //   );
+  </script>
+</body>
+
+</html>
