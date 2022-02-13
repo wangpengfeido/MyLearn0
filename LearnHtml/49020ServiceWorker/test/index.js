@@ -19,5 +19,5 @@ const options = {
 const server = https.createServer(options, app);
 const port = 3011;
 server.listen(port, function () {
-  console.log(`listening ${port}`);
+  console.log(`listening ${port}.https://localhost:${port}`);
 });
