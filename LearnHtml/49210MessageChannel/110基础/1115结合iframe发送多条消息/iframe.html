@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iframe</title>
+  </head>
+  <body>
+    <h1>iframe</h1>
+    <button class="btn">post message</button>
+
+    <script>
+      let port2;
+
+      // 接收到port以后保存下来
+      window.onmessage = (e) => {
+        port2 = e.ports[0];
+        // 监听一下消息
+        port2.onmessage = (e) => {
+          console.log("onmessage at iframe port2", e, e.data);
+        };
+      };
+
+      // 之后的通信使用port进行
+      document.querySelector(".btn").addEventListener("click", () => {
+        port2.postMessage("hello form iframe");
+      });
+    </script>
+  </body>
+</html>

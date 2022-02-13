@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>message channel</title>
+  </head>
+  <body>
+    <iframe class="iframe" src="./iframe.html"></iframe>
+
+    <div>
+      先将port发到iframe中，之后的通信通过这个channel 的两端 port来进行。
+    </div>
+
+    <button class="btn">post message</button>
+
+    <script>
+      const channel = new MessageChannel();
+      const port1 = channel.port1;
+
+      // 先将port发到iframe
+      const dom_iframe = document.querySelector(".iframe");
+      dom_iframe.addEventListener("load", () => {
+        dom_iframe.contentWindow.postMessage("init port", "*", [channel.port2]);
+      });
+
+      // 之后的通信使用port进行
+      port1.onmessage = (e) => {
+        console.log("onmessage at main page port1", e, e.data);
+      };
+      document.querySelector(".btn").addEventListener("click", () => {
+        port1.postMessage("hello form main page");
+      });
+    </script>
+  </body>
+</html>

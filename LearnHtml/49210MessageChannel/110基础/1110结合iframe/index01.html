@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>message channel</title>
+  </head>
+  <body>
+    <iframe class="iframe" src="./iframe.html"></iframe>
+
+    <button class="btn">post message</button>
+
+    <script>
+      // 本例主角
+      const channel = new MessageChannel();
+      channel.port1.onmessage = (e) => {
+        console.log("onmessage at main page port1", e, e.data);
+      };
+
+      document.querySelector(".btn").addEventListener("click", function () {
+        document
+          .querySelector(".iframe")
+          // 注意，winodw上的postMessage和标准message channel 不同
+          .contentWindow.postMessage("hello from the main page", "*", [
+            // 注意，这里只能发送一次，因为port2的所有权被交付出去，第二次发送时port2因失效报错
+            channel.port2,
+          ]);
+      });
+    </script>
+  </body>
+</html>

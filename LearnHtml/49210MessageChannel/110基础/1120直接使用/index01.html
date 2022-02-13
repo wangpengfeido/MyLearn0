@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>message channel</title>
+  </head>
+  <body>
+    <button class="btn1">post message on port1</button>
+    <button class="btn2">post message on port2</button>
+
+    <div>port1 发送消息，port2接收；port2 发送消息，port1接收。</div>
+
+    <script>
+      const channel = new MessageChannel();
+      channel.port1.onmessage = (e) => {
+        console.log("onmessage at main page port1", e, e.data);
+      };
+      channel.port2.onmessage = (e) => {
+        console.log("onmessage at main page port2", e, e.data);
+      };
+
+      document.querySelector(".btn1").addEventListener("click", function () {
+        channel.port1.postMessage("hello world");
+      });
+      document.querySelector(".btn2").addEventListener("click", function () {
+        channel.port2.postMessage("hello world");
+      });
+    </script>
+  </body>
+</html>
