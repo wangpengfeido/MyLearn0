@@ -1,0 +1,15 @@
+{
+  "name": "1110",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node ./index.ts"
+  },
+  "dependencies": {
+    "@types/ws": "^8.2.2",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5",
+    "ws": "^8.5.0"
+  }
+}
