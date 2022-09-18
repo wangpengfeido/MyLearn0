@@ -15,7 +15,7 @@ app.use(express.static('public'));
 
 app.get('/**', (req, res) => {
   console.log('sw test service be called.', req.path);
-  res.send('sw teat service response');
+  res.send('sw test service response');
 });
 
 const options = {
