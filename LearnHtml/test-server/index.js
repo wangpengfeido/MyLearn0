@@ -7,19 +7,20 @@ const app = express();
 app.all('**', function (req, res, next) {
   res.header('Access-Control-Allow-Origin', req.get('Origin'));
   res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Headers', 'accept,upgrade-insecure-requests');
 
   // 条件添加 Service-Worker-Allowed 头
-  if (req.query.worker_allowed) {
+  if (req.method !== 'OPTIONS' && req.query.worker_allowed) {
     res.header('Service-Worker-Allowed', '/');
   }
 
   // 条件设置 cookie
-  if (req.query.set_cookie) {
+  if (req.method !== 'OPTIONS' && req.query.set_cookie) {
     res.cookie('my-cookie', Math.random());
   }
 
   // 条件 302
-  if (req.query.redirect_to) {
+  if (req.method !== 'OPTIONS' && req.query.redirect_to) {
     res.statusCode = 302;
     res.header('Location', req.query.redirect_to);
   }

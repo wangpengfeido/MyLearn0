@@ -1,54 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="icon" href="data:;base64,=" />
-    <title>set cookie</title>
-  </head>
 
-  <body>
-    <div>
-      <div>结论：无论是 fetch 还是 redirect ，经过 sw 的 set-cookie 都能被正常设置。</div>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" href="data:;base64,=" />
+  <title>set cookie</title>
+</head>
 
-    <div><button id="fetch">fetch</button></div>
-    <div><button id="fetch-no-sw">fetch（不经过sw）</button></div>
-    <div><button id="fetch-set-cookie">fetch （返回 set cookie）</button></div>
-    <div><button id="redirect">302</button></div>
-    <div><button id="redirect-set-cookie">302 并 set cookie</button></div>
-    <script>
-      document.querySelector('#fetch').addEventListener('click', async () => {
-        const res = await fetch('https://localhost:3011/test-fetch');
-      });
-      document.querySelector('#fetch-no-sw').addEventListener('click', async () => {
-        const res = await fetch('https://localhost:3011/test-fetch/no-sw');
-      });
-      document.querySelector('#fetch-set-cookie').addEventListener('click', async () => {
-        const res = await fetch('https://localhost:3011/test-fetch?set_cookie=1');
-      });
-      document.querySelector('#redirect').addEventListener('click', async () => {
-        location.href = `https://localhost:3011/910test/13410set-cookie/test-fetch?redirect_to=${encodeURIComponent(
-          'https://localhost:3011/910test/13410set-cookie/index2.html'
-        )}`;
-      });
-      document.querySelector('#redirect-set-cookie').addEventListener('click', async () => {
-        location.href = `https://localhost:3011/910test/13410set-cookie/test-fetch?redirect_to=${encodeURIComponent(
-          'https://localhost:3011/910test/13410set-cookie/index2.html'
-        )}&set_cookie=1`;
-      });
-    </script>
+<body>
+  <div>
+    <div>结论：无论是 fetch 还是 redirect ，经过 sw 的 set-cookie 都能被正常设置。</div>
+  </div>
 
-    <script>
-      navigator.serviceWorker.register('/910test/13410set-cookie/sw.js').then(
-        () => {
-          console.log('registration succeeded');
-        },
-        (error) => {
-          console.log('registration error');
-        }
-      );
-    </script>
-  </body>
+  <div><button id="fetch">fetch</button></div>
+  <div><button id="fetch-no-sw">fetch（不经过sw）</button></div>
+  <div><button id="fetch-set-cookie">fetch （返回 set cookie）</button></div>
+  <div><button id="redirect">302</button></div>
+  <div><button id="redirect-set-cookie">302 并 set cookie</button></div>
+  <script>
+    document.querySelector('#fetch').addEventListener('click', async () => {
+      const res = await fetch('https://localhost:3011/test-fetch', { credentials: 'include' });
+    });
+    document.querySelector('#fetch-no-sw').addEventListener('click', async () => {
+      const res = await fetch('https://localhost:3011/test-fetch/no-sw', { credentials: 'include' });
+    });
+    document.querySelector('#fetch-set-cookie').addEventListener('click', async () => {
+      const res = await fetch('https://localhost:3011/test-fetch?set_cookie=1', { credentials: 'include' });
+    });
+    document.querySelector('#redirect').addEventListener('click', async () => {
+      location.href = `https://localhost:3011/910test/13410set-cookie/test-fetch?redirect_to=${encodeURIComponent(
+        'https://localhost:3011/910test/13410set-cookie/index2.html'
+      )}`;
+    });
+    document.querySelector('#redirect-set-cookie').addEventListener('click', async () => {
+      location.href = `https://localhost:3011/910test/13410set-cookie/test-fetch?redirect_to=${encodeURIComponent(
+        'https://localhost:3011/910test/13410set-cookie/index2.html'
+      )}&set_cookie=1`;
+    });
+  </script>
+
+  <hr />
+
+  <div><button id="fetch-3111">fetch（prot-3111）</button></div>
+  <div><button id="fetch-no-sw-3111">fetch（prot-3111）（不经过sw）</button></div>
+  <div><button id="fetch-set-cookie-3111">fetch （prot-3111）（返回 set cookie）</button></div>
+  <div><button id="redirect-3111">302（prot-3111）</button></div>
+  <div><button id="redirect-set-cookie-3111">302 并 set cookie（prot-3111）</button></div>
+  <script>
+    document.querySelector('#fetch-3111').addEventListener('click', async () => {
+      const res = await fetch('https://localhost:3111/test-fetch', { credentials: 'include' });
+    });
+    document.querySelector('#fetch-no-sw-3111').addEventListener('click', async () => {
+      const res = await fetch('https://localhost:3111/test-fetch/no-sw', { credentials: 'include' });
+    });
+    document.querySelector('#fetch-set-cookie-3111').addEventListener('click', async () => {
+      const res = await fetch('https://localhost:3111/test-fetch?set_cookie=1', { credentials: 'include' });
+    });
+    document.querySelector('#redirect-3111').addEventListener('click', async () => {
+      location.href = `https://localhost:3111/910test/13410set-cookie/test-fetch?redirect_to=${encodeURIComponent(
+        'https://localhost:3011/910test/13410set-cookie/index2.html'
+      )}`;
+    });
+    document.querySelector('#redirect-set-cookie-3111').addEventListener('click', async () => {
+      location.href = `https://localhost:3111/910test/13410set-cookie/test-fetch?redirect_to=${encodeURIComponent(
+        'https://localhost:3111/910test/13410set-cookie/index2.html'
+      )}&set_cookie=1`;
+    });
+  </script>
+
+
+  <script>
+    navigator.serviceWorker.register('/910test/13410set-cookie/sw.js').then(
+      () => {
+        console.log('registration succeeded');
+      },
+      (error) => {
+        console.log('registration error');
+      }
+    );
+  </script>
+</body>
+
 </html>
