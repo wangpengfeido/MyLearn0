@@ -28,7 +28,6 @@ app.use(express.static('public'));
 
 app.get('/**', (req, res) => {
   console.log('sw test service be called.', req.path);
-  //   res.header('Access-Control-Allow-Origin', 'https://localhost:3011');
 
   res.send('sw test service response');
 });
