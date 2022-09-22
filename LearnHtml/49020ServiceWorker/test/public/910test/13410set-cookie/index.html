@@ -50,7 +50,8 @@
   <div><button id="redirect-set-cookie-3111">302 并 set cookie（prot-3111）</button></div>
   <script>
     document.querySelector('#fetch-3111').addEventListener('click', async () => {
-      const res = await fetch('https://localhost:3111/test-fetch', { credentials: 'include' });
+      // const res = await fetch('https://localhost:3111/test-fetch', { credentials: 'include' });
+      const res = await fetch('https://localhost:3111/test-fetch', { mode: 'no-cors', credentials: 'include' });
     });
     document.querySelector('#fetch-no-sw-3111').addEventListener('click', async () => {
       const res = await fetch('https://localhost:3111/test-fetch/no-sw', { credentials: 'include' });
