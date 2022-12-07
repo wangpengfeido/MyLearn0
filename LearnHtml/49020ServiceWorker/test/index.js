@@ -32,6 +32,12 @@ app.get('/**', (req, res) => {
   res.send('sw test service response');
 });
 
+app.post('/**', (req, res) => {
+  console.log('[post]sw test service be called.', req.path);
+
+  res.send('[post]sw test service response');
+});
+
 const options = {
   key: fs.readFileSync('./localhost-key.pem'),
   cert: fs.readFileSync('./localhost.pem'),

@@ -10,6 +10,23 @@
 </head>
 
 <body>
+  <script>
+    window.onerror = () => {
+      console.log('------------bbb')
+    }
+  </script>
+
+  <iframe id="iframe"></iframe>
+
+  <script>
+    const domIframe = document.querySelector('#iframe')
+    domIframe.onerror = () => {
+      console.log('====================================aaaaaaaaaa')
+    }
+    domIframe.src = "https://ad-kibana-i18n.bytedance.net/tlb_es_i18n/app/kibana#/discover?_g=(time:(mode:absolute,from:'2022-09-22T01:38:36.000Z',to:'2022-09-22T02:38:36.000Z'))&_a=(columns:!(_source),index:'tlb_diag_log*',interval:auto,query:(language:lucene,query:'domain%3Awangpengfeitesta-i18n.byted.org'),sort:!('@timestamp',desc))"
+  </script>
+
+
   <div>
     <div>结论：无论是 fetch 还是 redirect ，经过 sw 的 set-cookie 都能被正常设置。</div>
   </div>

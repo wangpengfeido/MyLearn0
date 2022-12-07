@@ -18,6 +18,6 @@ this.addEventListener('fetch', async function (event) {
     let myBlob = new Blob(['my response']);
     let init = { status: 200 };
     let myResponse = new Response(myBlob, init);
-    event.respondWith(myResponse);
+    event.respondWith(Promise.resolve(myResponse));
   }
 });

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:;base64,=">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div>
+    <button id="fetch-btn">fetch-btn</button>
+  </div>
+  <script>
+    document.querySelector('#fetch-btn').addEventListener('click', () => {
+      fetch('https://localhost:3111').then(() => {
+        console.log('success')
+      })
+    })
+  </script>
+
+
+  <div>
+    <button id="test-btn">test</button>
+  </div>
+
+  <script>
+    document.querySelector('#test-btn').addEventListener('click', () => {
+      console.log(window.performance.getEntries())
+    })
+  </script>
+</body>
+
+</html>
