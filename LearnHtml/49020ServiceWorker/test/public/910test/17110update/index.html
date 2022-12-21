@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" href="data:;base64,=">
+  <title>normal</title>
+</head>
+
+<body>
+
+  <div>
+    更新 sw
+  </div>
+  <div>
+    结论：
+  </div>
+
+  <div><button id="fetch">fetch</button></div>
+  <script>
+    document.querySelector("#fetch").addEventListener("click", async () => {
+      const res = await fetch(
+        "https://localhost:3011/test-fetch",
+      );
+      const text = await res.text();
+    });
+  </script>
+
+  <div><button id="update">更新</button></div>
+  <script>
+    document.querySelector("#update").addEventListener("click", async () => {
+      window.serviceWorkerRegistration.update().then(() => {
+        console.log('更新成功')
+      }).catch('更新失败')
+    });
+  </script>
+
+  <script>
+    navigator.serviceWorker
+      .register("/910test/17110update/sw.js", { scope: undefined })
+      .then(
+        (serviceWorkerRegistration) => {
+          window.serviceWorkerRegistration = serviceWorkerRegistration
+          console.log("registration succeeded");
+        },
+        (error) => {
+          console.log("registration error");
+        }
+      );
+  </script>
+</body>
+
+</html>
