@@ -16,7 +16,7 @@
       scope：同一scope下不允许注册多个sw。不同scope允许注册不同sw。
     </div>
     <div>
-      scope 配置必须在 sw.js 路径之下。除非 sw.js 文件带了 Service-Worker-Allowed 响应头。
+      <span>scope 配置必须在 sw.js 路径之下。除非 sw.js 文件带了 Service-Worker-Allowed 响应头。</span>
     </div>
   </div>
 
@@ -33,10 +33,15 @@
 
   <script>
     navigator.serviceWorker
-      .register("/910test/0110registration-scope/sw.js", { scope: undefined })
-      // .register("/910test/0110registration-scope/sw.js", { scope: '/910test/0110registration-scope/a/b' })
-      // .register("/910test/0110registration-scope/sw.js", { scope: '/' })
-      // .register("/910test/0110registration-scope/sw.js?worker_allowed=1", { scope: '/' })
+      .register("/910test/10110registration-scope/sw.js", { scope: undefined })
+      // 允许
+      // .register("/910test/10110registration-scope/sw.js", { scope: '/910test/10110registration-scope/a/b' })
+      // 不允许
+      // .register("/910test/10110registration-scope/sw.js", { scope: '/' })
+      // 允许
+      // .register("/910test/10110registration-scope/sw.js?worker_allowed=1", { scope: '/' })
+      // 允许注册到页面其他 path 下
+      // .register("/910test/10111registration-scope-1/sw.js?worker_allowed=1", { scope: '/910test/10111registration-scope-1/a/b' })
       .then(
         () => {
           console.log("registration succeeded");
