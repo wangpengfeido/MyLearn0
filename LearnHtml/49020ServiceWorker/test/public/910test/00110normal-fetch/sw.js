@@ -9,7 +9,7 @@ this.addEventListener('activate', function (event) {
 });
 
 this.addEventListener('fetch', function (event) {
-  console.log('----------old fetch', event.request);
+  console.log('----------old fetch', event, event.request, event.request.priority);
 
   event.respondWith(
     (async () => {
@@ -37,3 +37,7 @@ this.addEventListener('fetch', function (event) {
     })()
   );
 });
+
+// https://github.com/whatwg/fetch/issues/436
+// https://github.com/w3c/ServiceWorker/issues/1137
+// https://medium.baqend.com/chromes-service-workers-break-http-2-priorities-649c4e0fa930

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="icon" href="data:;base64,=">
+  <link rel="stylesheet" type="text/css" href="./index.css">
   <title>normal</title>
 </head>
 
@@ -20,7 +21,11 @@
     document.querySelector("#fetch").addEventListener("click", async () => {
       const res = await fetch(
         "https://localhost:3011/test-fetch",
-        { method: 'POST', body: `{"a":1}` }
+        {
+          method: 'POST', body: `{"a":1}`,
+          priority: 'low'
+          // importance: 'low'
+        }
       );
     });
   </script>
@@ -28,7 +33,7 @@
 
   <script>
     navigator.serviceWorker
-      .register("/910test/0011normal-fetch/sw.js", { scope: undefined })
+      .register("/910test/00110normal-fetch/sw.js", { scope: undefined })
       .then(
         (serviceWorkerRegistration) => {
           window.serviceWorkerRegistration = serviceWorkerRegistration
@@ -40,6 +45,7 @@
       );
 
   </script>
+  <script src="./index.js"></script>
 </body>
 
 </html>
