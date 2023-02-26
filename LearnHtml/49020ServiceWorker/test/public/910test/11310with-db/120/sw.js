@@ -40,11 +40,11 @@ this.addEventListener('activate', function (event) {
 });
 
 this.addEventListener('fetch', function (event) {
-  if (event.request.url.includes('/910test/1310with-db/120/console-has-db')) {
+  if (event.request.url.includes('/910test/11310with-db/120/console-has-db')) {
     event.respondWith(
       fetch(`/fetch/console-has-db/${JSON.stringify(!!db)}/temp/${JSON.stringify(!!temp)}`)
     );
-  } else if (event.request.url.includes('/910test/1310with-db/120/open-db')) {
+  } else if (event.request.url.includes('/910test/11310with-db/120/open-db')) {
     event.respondWith(
       (async () => {
         const startTime = Date.now();

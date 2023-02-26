@@ -26,6 +26,12 @@ app.all('**', function (req, res, next) {
 
 app.use(express.static('public'));
 
+app.get('/**/test-js.js', (req, res) => {
+  console.log('sw test service be called.', req.path);
+
+  res.send(`console.log("test js: ","${req.path}")`);
+});
+
 app.get('/**', (req, res) => {
   console.log('sw test service be called.', req.path);
 

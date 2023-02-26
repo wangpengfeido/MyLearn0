@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" href="data:;base64,=">
+  <title>timeline</title>
+</head>
+
+<body>
+
+  <div>
+    时间消耗
+  </div>
+
+  <div><button id="fetch">fetch</button></div>
+  <script>
+    document.querySelector("#fetch").addEventListener("click", async () => {
+      const res = await fetch(
+        "https://localhost:3011/test-fetch",
+        {
+          method: 'POST', body: `{"a":1}`,
+          // priority: 'low'
+          // importance: 'low'
+        }
+      );
+    });
+  </script>
+
+
+  <script>
+    navigator.serviceWorker
+      .register("/910test/91110timeline/sw.js", { scope: undefined })
+      .then(
+        (serviceWorkerRegistration) => {
+          window.serviceWorkerRegistration = serviceWorkerRegistration
+          console.log("registration succeeded");
+        },
+        (error) => {
+          console.log("registration error");
+        }
+      );
+
+  </script>
+</body>
+
+</html>

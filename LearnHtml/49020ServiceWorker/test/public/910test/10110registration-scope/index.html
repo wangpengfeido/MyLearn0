@@ -33,11 +33,13 @@
 
   <script>
     navigator.serviceWorker
-      .register("/910test/10110registration-scope/sw.js", { scope: undefined })
+      // .register("/910test/10110registration-scope/sw.js", { scope: undefined })
       // 允许
       // .register("/910test/10110registration-scope/sw.js", { scope: '/910test/10110registration-scope/a/b' })
       // 不允许
       // .register("/910test/10110registration-scope/sw.js", { scope: '/' })
+      // 不允许
+      .register("/910test/10110registration-scope/sw.js", { scope: '/910test/10110registration-scope/' })
       // 允许
       // .register("/910test/10110registration-scope/sw.js?worker_allowed=1", { scope: '/' })
       // 允许注册到页面其他 path 下

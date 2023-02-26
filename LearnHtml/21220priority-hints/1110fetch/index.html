@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" href="data:;base64,=">
+  <title>fetch priority</title>
+</head>
+
+<body>
+
+  <div></div>
+
+  <div><button id="fetch">fetch</button></div>
+  <script>
+    document.querySelector("#fetch").addEventListener("click", async () => {
+      // const request = new Request("../test-file",
+      // const request = new Request("../test-css.css",
+      const request = new Request("../test-js.js",
+        {
+          method: 'get',
+          // mode: 'same-origin',
+          mode: 'no-cors',
+          priority: 'auto',
+          // priority: 'low'
+          // headers: {
+          //   'fetchpriority': 'low'
+          // }
+        });
+      console.log('request:', request);
+      const res = await fetch(request);
+    });
+
+    // https://github.com/whatwg/fetch/issues/436
+    // https://github.com/w3c/ServiceWorker/issues/1137
+    // https://medium.baqend.com/chromes-service-workers-break-http-2-priorities-649c4e0fa930
+  </script>
+
+
+</body>
+
+</html>

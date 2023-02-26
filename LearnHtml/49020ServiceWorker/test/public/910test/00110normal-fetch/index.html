@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="icon" href="data:;base64,=">
   <link rel="stylesheet" type="text/css" href="./index.css">
+  <link rel="stylesheet" type="text/css" href="./index2.css">
   <title>normal</title>
 </head>
 
@@ -23,11 +24,20 @@
         "https://localhost:3011/test-fetch",
         {
           method: 'POST', body: `{"a":1}`,
-          priority: 'low'
+          // priority: 'low'
           // importance: 'low'
         }
       );
     });
+  </script>
+  <div><button id="append-css">append-css</button></div>
+  <script>
+    document.querySelector("#append-css").addEventListener("click", async () => {
+      const cssElement = document.createElement('div');
+      cssElement.innerHTML = '<link rel="stylesheet" type="text/css" href="./index.css">'
+      document.body.appendChild(cssElement);
+    });
+
   </script>
 
 
@@ -45,7 +55,15 @@
       );
 
   </script>
-  <script src="./index.js"></script>
+  <!-- <script src="/1/test-js.js" fetchpriority="low"></script> -->
+  <!-- <script src="/2/test-js.js"></script>
+  <script src="/3/test-js.js"></script>
+  <script src="/4/test-js.js"></script>
+  <script src="/5/test-js.js"></script>
+  <script src="/6/test-js.js"></script>
+  <script src="/7/test-js.js"></script>
+  <script src="/8/test-js.js"></script>
+  <script src="/9/test-js.js"></script> -->
 </body>
 
 </html>

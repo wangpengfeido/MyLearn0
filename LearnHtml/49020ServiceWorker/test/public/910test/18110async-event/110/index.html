@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" href="data:;base64,=">
+  <title>异步注册事件</title>
+</head>
+
+<body>
+
+  <div>
+    异步注册事件
+    <div>异步注册的事件不能生效</div>
+    <div>Event handler of 'fetch' event must be added on the initial evaluation of worker script.</div>
+  </div>
+
+  <div><button id="fetch">fetch</button></div>
+  <script>
+    document.querySelector("#fetch").addEventListener("click", async () => {
+      const res = await fetch(
+        "https://localhost:3011/test-fetch",
+        {
+          method: 'POST', body: `{"a":1}`,
+        }
+      );
+    });
+  </script>
+
+  <script>
+    navigator.serviceWorker
+      .register("/910test/18110async-event/110/sw.js", { scope: undefined })
+      .then(
+        (serviceWorkerRegistration) => {
+          window.serviceWorkerRegistration = serviceWorkerRegistration
+          console.log("registration succeeded");
+        },
+        (error) => {
+          console.log("registration error");
+        }
+      );
+
+  </script>
+</body>
+
+</html>
