@@ -16,24 +16,26 @@ this.addEventListener('activate', function (event) {
 //   );
 // });
 
-// this.addEventListener('fetch', function (event) {
-//   event.respondWith(
-//     (async () => {
-//       return await fetch(event.request);
-//     })()
-//   );
-// });
-
 this.addEventListener('fetch', function (event) {
+  console.log('------------old fetch:', event.request.url);
+  console.log('------------referrer:', event.request.referrer);
+  console.log('------------referrerPolicy:', event.request.referrerPolicy);
   event.respondWith(
     (async () => {
-      console.time(event.request.url + '实际请求耗时');
-      const res = await fetch(event.request);
-      console.timeEnd(event.request.url + '实际请求耗时');
-      return res;
+      return await fetch(event.request);
     })()
   );
 });
+
+// this.addEventListener('fetch', function (event) {
+//   event.respondWith(
+//     (async () => {
+//       const res = await fetch(event.request);
+//       console.timeEnd(event.request.url + '实际请求耗时');
+//       return res;
+//     })()
+//   );
+// });
 
 // if (event.request.mode === 'navigate') {
 //   return await fetch(event.request);

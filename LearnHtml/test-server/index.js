@@ -7,7 +7,7 @@ const app = express();
 app.all('**', function (req, res, next) {
   res.header('Access-Control-Allow-Origin', req.get('Origin'));
   res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Allow-Headers', 'accept,upgrade-insecure-requests');
+  res.header('Access-Control-Allow-Headers', 'a,accept,upgrade-insecure-requests');
 
   // 条件添加 Service-Worker-Allowed 头
   if (req.method !== 'OPTIONS' && req.query.worker_allowed) {
@@ -30,7 +30,7 @@ app.all('**', function (req, res, next) {
 
 app.use(express.static('public'));
 
-app.get('/**', (req, res) => {
+app.all('/**', (req, res) => {
   console.log('learn html service be called.', req.path);
   res.send('learn html service response');
 });
