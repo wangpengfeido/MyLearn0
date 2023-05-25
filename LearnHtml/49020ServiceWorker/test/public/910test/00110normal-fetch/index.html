@@ -23,7 +23,7 @@
       const res = await fetch(
         // "https://localhost:3011/test-fetch",
         // "https://localhost:3111/test-fetch",
-        "http://localhost:3111/test-fetch",
+        "https://localhost:3111/test-fetch",
         // "/test-fetch",
         {
           method: 'POST',
@@ -35,6 +35,8 @@
           // importance: 'low'
         }
       );
+      const txt = await res.text()
+      console.log('============', txt)
     });
   </script>
 

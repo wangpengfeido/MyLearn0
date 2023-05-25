@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="data:;base64,=">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>结论：clone 的时间较短。blob() 的时间较长，耗时约为1ms每100kb</div>
+
+  <button id="fetch_100k">fetch_100k</button>
+  <script>
+    document.querySelector('#fetch_100k').addEventListener('click', async () => {
+      // const res = await fetch('../../assets/script_1k.js')
+      const res = await fetch('../../assets/img_100k.bmp')
+      // const res = await fetch('../../assets/img_5m.bmp')
+      // const res = await fetch('https://localhost:3111/img_3m.bmp')
+
+      console.log(res, res.headers.get("content-length"))
+
+      performance?.mark('timeM');
+      const clonedRes = res.clone()
+      performance?.mark('timeN');
+      console.log(performance.measure('my-test', 'timeM', 'timeN'));
+
+      const blob = await clonedRes.blob()
+      console.log('-------', blob.size)
+    })
+  </script>
+</body>
+
+</html>

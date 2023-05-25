@@ -1,4 +1,5 @@
 const https = require('https');
+const http = require('http');
 const fs = require('fs');
 const express = require('express');
 
@@ -7,7 +8,7 @@ const app = express();
 app.all('**', function (req, res, next) {
   res.header('Access-Control-Allow-Origin', req.get('Origin'));
   res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Allow-Headers', 'a,accept,upgrade-insecure-requests');
+  // res.header('Access-Control-Allow-Headers', 'a,accept,upgrade-insecure-requests');
 
   // 条件添加 Service-Worker-Allowed 头
   if (req.method !== 'OPTIONS' && req.query.worker_allowed) {

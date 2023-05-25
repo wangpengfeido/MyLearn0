@@ -20,11 +20,14 @@ this.addEventListener('fetch', function (event) {
   console.log('------------old fetch:', event.request.url);
   console.log('------------referrer:', event.request.referrer);
   console.log('------------referrerPolicy:', event.request.referrerPolicy);
-  event.respondWith(
-    (async () => {
-      return await fetch(event.request);
-    })()
-  );
+  if (event.request.url.includes('/test-fetch')) {
+    event.respondWith(
+      (async () => {
+        // return await fetch(event.request);
+        return await fetch('http://localhost:3111/test-fetch');
+      })()
+    );
+  }
 });
 
 // this.addEventListener('fetch', function (event) {
