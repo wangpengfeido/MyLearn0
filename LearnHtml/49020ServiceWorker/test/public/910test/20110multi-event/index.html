@@ -13,18 +13,42 @@
 
 <body>
 
-  <div>
+  <h1>
     多次注册事件
-    <div>
-      结论：可以多次注册事件
-    </div>
+  </h1>
+  <div>
+    结论：
+    <ul>
+      <li>可以多次注册 message 事件。</li>
+      <li>可以多次注册 install 事件。</li>
+      <li>可以多次注册 activate 事件。</li>
+      <li>可以多次注册 fetch 事件。
+        <ul>
+          <li>这里需要非常注意的是，多次注册事件相当于会将多次注册的代码段按注册先后顺序拼接到一起。一旦调用了 event.respondWith，后面的代码将不会执行。</li>
+          <ul>
+            <li>也就是说，若多次调用了 event.respondWith，只有第一个会生效。</li>
+          </ul>
+        </ul>
+      </li>
+    </ul>
   </div>
 
-  <div><button id="fetch">fetch</button></div>
+  <div><button id="test-fetch">test-fetch</button></div>
   <script>
-    document.querySelector("#fetch").addEventListener("click", async () => {
+    document.querySelector("#test-fetch").addEventListener("click", async () => {
       const res = await fetch(
         "https://localhost:3011/test-fetch",
+        {
+          method: 'POST', body: `{"a":1}`,
+        }
+      );
+    });
+  </script>
+  <div><button id="my-fetch">my-fetch</button></div>
+  <script>
+    document.querySelector("#my-fetch").addEventListener("click", async () => {
+      const res = await fetch(
+        "https://localhost:3011/my-fetch",
         {
           method: 'POST', body: `{"a":1}`,
         }
@@ -39,18 +63,6 @@
       if (navigator.serviceWorker?.controller?.state === 'activated') {
         navigator.serviceWorker.controller.postMessage({ a: 'aaa' });
       }
-    });
-  </script>
-
-  <div><button id="send-message-in-sw">send-message-in-sw</button></div>
-  <script>
-    document.querySelector("#send-message-in-sw").addEventListener("click", async () => {
-      const res = await fetch(
-        "https://localhost:3011/send-message-in-sw",
-        {
-          method: 'POST', body: `{"a":1}`,
-        }
-      );
     });
   </script>
 

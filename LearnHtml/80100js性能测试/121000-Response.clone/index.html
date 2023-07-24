@@ -22,13 +22,27 @@
 
       console.log(res, res.headers.get("content-length"))
 
-      performance?.mark('timeM');
       const clonedRes = res.clone()
+
+      performance?.mark('timeM');
+      const blob = await clonedRes.blob()
       performance?.mark('timeN');
+
       console.log(performance.measure('my-test', 'timeM', 'timeN'));
 
-      const blob = await clonedRes.blob()
       console.log('-------', blob.size)
+
+      function process({ done, value }) {
+        console.log('===============', done, value && value.length, value)
+        if (!done) {
+          reader.read("byob").then(process);
+        }
+      }
+      const reader = res.body.getReader();
+      performance?.mark('timeU');
+      reader.read("byob").then(process);
+      performance?.mark('timeV');
+      console.log(performance.measure('test-read-stream', 'timeU', 'timeV'));
     })
   </script>
 </body>
