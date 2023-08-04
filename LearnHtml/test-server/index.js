@@ -41,7 +41,13 @@ const options = {
   cert: fs.readFileSync('./localhost.pem'),
 };
 
+// const options = {
+//   key: fs.readFileSync('./test.wpf.com-key.pem'),
+//   cert: fs.readFileSync('./test.wpf.com.pem'),
+// };
+
 const server = https.createServer(options, app);
+// const server = http.createServer(app);
 const port = 3111;
 server.listen(port, function () {
   console.log(`listening ${port}.https://localhost:${port}`);
