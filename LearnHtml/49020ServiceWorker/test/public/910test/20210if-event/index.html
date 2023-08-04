@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" href="data:;base64,=">
+  <link rel="stylesheet" type="text/css" href="./index.css">
+  <link rel="stylesheet" type="text/css" href="./index2.css">
+  <title>在条件中注册事件</title>
+</head>
+
+<body>
+
+  <h1>
+    在条件中注册事件
+  </h1>
+  <div>
+    结论：可以在条件中注册事件。并且可以异步注册事件。
+  </div>
+
+
+  <div><button id="send">send</button></div>
+  <script>
+    document.querySelector("#send").addEventListener("click", async () => {
+      if (navigator.serviceWorker?.controller?.state === 'activated') {
+        navigator.serviceWorker.controller.postMessage({ a: 'aaa' });
+      }
+    });
+  </script>
+
+
+  <script>
+    navigator.serviceWorker
+      .register("/910test/20210if-event/sw.js", { scope: undefined })
+      .then(
+        (serviceWorkerRegistration) => {
+          window.serviceWorkerRegistration = serviceWorkerRegistration
+          console.log("registration succeeded");
+        },
+        (error) => {
+          console.log("registration error");
+        }
+      );
+
+  </script>
+</body>
+
+</html>

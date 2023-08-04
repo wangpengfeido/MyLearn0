@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" href="data:;base64,=">
+  <title>在 sw 中直接 import url</title>
+</head>
+
+<body>
+
+  <h1>
+    在 sw 中直接 import url
+  </h1>
+  <div>
+    结论：
+  </div>
+
+
+  <div><button id="test-fetch">test-fetch</button></div>
+  <script>
+    document.querySelector("#test-fetch").addEventListener("click", async () => {
+      const res = await fetch(
+        "https://localhost:3011/test-fetch",
+        {
+          method: 'GET',
+        }
+      );
+      console.log('request result: ', await res.text())
+    });
+  </script>
+
+  <script>
+    navigator.serviceWorker
+      .register("/910test/21130import-url/sw.js", {
+        scope: undefined,
+        // 必须设置 type='module'
+        type: 'module',
+      })
+      .then(
+        (serviceWorkerRegistration) => {
+          window.serviceWorkerRegistration = serviceWorkerRegistration
+          console.log("registration succeeded");
+        },
+        (error) => {
+          console.log("registration error");
+        }
+      );
+
+  </script>
+</body>
+
+</html>

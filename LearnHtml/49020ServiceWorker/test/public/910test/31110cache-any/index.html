@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" href="data:;base64,=">
+  <link rel="stylesheet" type="text/css" href="./index.css">
+  <link rel="stylesheet" type="text/css" href="./index2.css">
+  <title>缓存为任意值</title>
+</head>
+
+<body>
+
+  <h1>
+    缓存为任意值
+  </h1>
+  <div>
+    结论：request 的 response 可以缓存为任意值
+  </div>
+
+
+  <div><button id="test-fetch">test-fetch</button></div>
+  <script>
+    document.querySelector("#test-fetch").addEventListener("click", async () => {
+      const res = await fetch(
+        "https://localhost:3011/test-fetch",
+        {
+          method: 'GET',
+        }
+      );
+      console.log('request result: ', await res.text())
+    });
+  </script>
+
+
+
+
+  <script>
+    navigator.serviceWorker
+      .register("/910test/31110cache-any/sw.js", { scope: undefined })
+      .then(
+        (serviceWorkerRegistration) => {
+          window.serviceWorkerRegistration = serviceWorkerRegistration
+          console.log("registration succeeded");
+        },
+        (error) => {
+          console.log("registration error");
+        }
+      );
+
+  </script>
+</body>
+
+</html>
