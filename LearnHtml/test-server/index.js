@@ -2,13 +2,32 @@ const https = require('https');
 const http = require('http');
 const fs = require('fs');
 const express = require('express');
+const yargs = require('yargs/yargs');
+const { hideBin } = require('yargs/helpers');
+
+const argv = yargs(hideBin(process.argv)).argv;
+/** 是否使用 http */
+const argvHttp = argv['http'];
+/** http 端口 */
+const argvHttpPort = argv['http-port'] || 3112;
+/** https 域名 */
+const argvHttpsHost = argv['http-host'] || 'localhost';
 
 const app = express();
 
 app.all('**', function (req, res, next) {
   res.header('Access-Control-Allow-Origin', req.get('Origin'));
-  res.header('Access-Control-Allow-Credentials', 'true');
+
+  // res.header('Access-Control-Allow-Credentials', 'true');
   // res.header('Access-Control-Allow-Headers', 'a,accept,upgrade-insecure-requests');
+
+  // 添加响应头
+  for (const queryKey in req.query) {
+    const headerKey = queryKey.match(/^add-header_(.*)$/)?.[1];
+    if (headerKey) {
+      res.header(headerKey, req.query[queryKey]);
+    }
+  }
 
   // 条件添加 Service-Worker-Allowed 头
   if (req.method !== 'OPTIONS' && req.query.worker_allowed) {
@@ -29,26 +48,32 @@ app.all('**', function (req, res, next) {
   next();
 });
 
+// 静态目录
 app.use(express.static('public'));
 
+// 静态目录
+app.use(express.static('../'));
+
+// 自定义
 app.all('/**', (req, res) => {
   console.log('learn html service be called.', req.path);
   res.send('learn html service response');
 });
 
 const options = {
-  key: fs.readFileSync('./localhost-key.pem'),
-  cert: fs.readFileSync('./localhost.pem'),
+  key: fs.readFileSync(`./${argvHttpsHost}-key.pem`),
+  cert: fs.readFileSync(`./${argvHttpsHost}.pem`),
 };
 
-// const options = {
-//   key: fs.readFileSync('./test.wpf.com-key.pem'),
-//   cert: fs.readFileSync('./test.wpf.com.pem'),
-// };
-
-const server = https.createServer(options, app);
-// const server = http.createServer(app);
-const port = 3111;
-server.listen(port, function () {
-  console.log(`listening ${port}.https://localhost:${port}`);
+const httpsServer = https.createServer(options, app);
+const httpsPort = 3111;
+httpsServer.listen(httpsPort, function () {
+  console.log(`https listening ${httpsPort}.https://${argvHttpsHost}:${httpsPort}`);
 });
+
+if (argvHttp) {
+  const httpServer = http.createServer(app);
+  httpServer.listen(argvHttpPort, function () {
+    console.log(`http listening ${argvHttpPort}.`);
+  });
+}
