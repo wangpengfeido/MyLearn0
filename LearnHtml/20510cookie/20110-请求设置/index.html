@@ -7,28 +7,24 @@
   </head>
   <body>
     <div>
-      <a
-        href="http://test.wpf.com/20510cookie/20110-%E8%AF%B7%E6%B1%82%E8%AE%BE%E7%BD%AE(%E5%90%8C%E6%BA%90)/"
-        >http://test.wpf.com/20510cookie/20110-%E8%AF%B7%E6%B1%82%E8%AE%BE%E7%BD%AE(%E5%90%8C%E6%BA%90)/</a
-      >
+      <a href="https://test.wpf.com:13111/20510cookie/20110-20110-请求设置/">http://test.wpf.com</a>
     </div>
-    <div>结论：正常携带了 cookie</div>
+
+    <div>结论：正常携带了 cookie。</div>
 
     <button class="btn-set-cookie-1">fetch 设置 cookie</button>
     <script>
       document.querySelector('.btn-set-cookie-1').addEventListener('click', () => {
-        fetch('http://test.wpf.com?set_cookie=1');
+        fetch('https://test.wpf.com:13111?set_cookie=1');
       });
     </script>
 
     <button class="btn-fetch-test">fetch 测试</button>
     <script>
       document.querySelector('.btn-fetch-test').addEventListener('click', () => {
-        fetch('http://test.wpf.com', {
-          // 只有同源请求才携带 cookie
+        fetch('https://test.wpf.com:13111', {
+          // 只有同域请求才携带 cookie
           credentials: 'same-origin',
-          // credentials: 'omit',
-          // credentials: 'include',
         });
       });
     </script>

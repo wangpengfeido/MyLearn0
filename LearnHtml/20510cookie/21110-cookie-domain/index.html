@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <hr />
+    <div></div>
+    <div>
+      <div>结论：</div>
+
+      <div>
+        设置 cookie 时，cookie 的 domain 必须与请求域名匹配才能被设置。（此处的匹配指的是 cookie
+        domain 必须与请求域名相同或者是请求域名的父域名）
+      </div>
+      <div>set-cookie 时，如果不指定 domain，那么就将站点域名设置为 domain。</div>
+
+      <hr />
+      <div>
+        下面的站点下，在 domain 匹配时均能正确设置 cookie，domain 不匹配时均不能设置 cookie：
+      </div>
+      <div>
+        <a href="https://test.wpf.com:13111/20510cookie/21110-cookie-domain/">test.wpf.com</a>
+      </div>
+      <div>
+        <a href="https://test2.wpf.com:13112/20510cookie/21110-cookie-domain/">test2.wpf.com</a>
+      </div>
+      <div>
+        <a href="https://test.wpf2.com:13121/20510cookie/21110-cookie-domain/">test.wpf2.com</a>
+      </div>
+    </div>
+    <hr />
+
+    <button class="btn-set-cookie-1">fetch 设置 cookie（test2.wpf.com）</button>
+    <script>
+      document.querySelector('.btn-set-cookie-1').addEventListener('click', () => {
+        fetch(
+          'https://test2.wpf.com:13112?add-header_Access-Control-Allow-Credentials=true&set_cookie=1&cookie_same_site=None&cookie_secure=1',
+          {
+            mode: 'cors',
+            credentials: 'include',
+          }
+        );
+      });
+    </script>
+
+    <button class="btn-set-cookie-2">
+      fetch 设置 cookie（test2.wpf.com）（domain=test3.wpf.com）
+    </button>
+    <script>
+      document.querySelector('.btn-set-cookie-2').addEventListener('click', () => {
+        fetch(
+          'https://test2.wpf.com:13112?set_cookie=1&cookie_same_site=None&cookie_secure=1&cookie_domain=test3.wpf.com'
+        );
+      });
+    </script>
+  </body>
+</html>

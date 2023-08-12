@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <hr />
+    <div>
+      <div>结论：</div>
+      <div>请求是否能携带 cookie ，是由 cookie 的 domain 和请求地址是否匹配决定的。</div>
+    </div>
+
+    <hr />
+    <div>
+      <div>请求 test2.wpf.com 可以正确携带 cookie，请求 test.wpf.com 不能携带。</div>
+      <div>
+        <a href="https://test.wpf.com:13111/20510cookie/21210-cookie-domain-2/">test.wpf.com</a>
+      </div>
+      <div>
+        <a href="https://test2.wpf.com:13112/20510cookie/21210-cookie-domain-2/">test2.wpf.com</a>
+      </div>
+      <div>
+        <a href="https://test.wpf2.com:13121/20510cookie/21210-cookie-domain-2/">test.wpf2.com</a>
+      </div>
+    </div>
+    <hr />
+
+    <div>
+      <button class="btn-set-cookie-1">fetch 设置 cookie（test2.wpf.com）</button>
+      <script>
+        document.querySelector('.btn-set-cookie-1').addEventListener('click', () => {
+          fetch(
+            'https://test2.wpf.com:13112?add-header_Access-Control-Allow-Credentials=true&set_cookie=1&cookie_same_site=None&cookie_secure=1',
+            {
+              mode: 'cors',
+              credentials: 'include',
+            }
+          );
+        });
+      </script>
+    </div>
+
+    <div>
+      <button class="btn-fetch-test">fetch 测试（test2.wpf.com）</button>
+      <script>
+        document.querySelector('.btn-fetch-test').addEventListener('click', () => {
+          fetch(`https://test2.wpf.com:13112?add-header_Access-Control-Allow-Credentials=true`, {
+            mode: 'cors',
+            credentials: 'include',
+          });
+        });
+      </script>
+    </div>
+
+    <div>
+      <button class="btn-fetch-test-2">fetch 测试（test.wpf.com）</button>
+      <script>
+        document.querySelector('.btn-fetch-test-2').addEventListener('click', () => {
+          fetch(`https://test.wpf.com:13111?add-header_Access-Control-Allow-Credentials=true`, {
+            mode: 'cors',
+            credentials: 'include',
+          });
+        });
+      </script>
+    </div>
+  </body>
+</html>

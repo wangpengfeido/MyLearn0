@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <hr />
+    <div>
+      <div>结论：</div>
+      <div>credentials 影响的是跨域请求的 cookie 表现。</div>
+      <div>credentials 既会影响 set-cookie，也会影响 cookie 的携带。</div>
+      <div>
+        当跨域请求的 credentials 被设置为 include 时，响应头 Access-Control-Allow-Origin 不能为
+        *，且响应头 Access-Control-Allow-Credentials 必须为 true。
+      </div>
+    </div>
+    <hr />
+
+    <div>
+      <div>设置 cookie</div>
+      <div>
+        credentials=same-origin 时，在
+        <a href="https://test2.wpf.com:13112/20510cookie/61110-credentials/">test2.wpf.com</a>
+        能设置成功；在
+        <a href="https://test.wpf.com:13111/20510cookie/61110-credentials/">test.wpf.com</a
+        >不能设置成功。
+      </div>
+      <div>credentials=include 时，在任何站点都能设置成功。</div>
+    </div>
+
+    <hr />
+    <div>
+      <div>携带 cookie</div>
+      <div>
+        credentials=same-origin 时，在
+        <a href="https://test2.wpf.com:13112/20510cookie/61110-credentials/">test2.wpf.com</a>
+        能携带成功；在
+        <a href="https://test.wpf.com:13111/20510cookie/61110-credentials/">test.wpf.com</a
+        >不能携带成功。
+      </div>
+      <div>credentials=include 时，在任何站点都能携带成功。</div>
+    </div>
+    <hr />
+
+    <div>
+      <button class="btn-set-cookie-1">
+        fetch 设置 cookie（test2.wpf.com）（credentials=include）
+      </button>
+      <script>
+        document.querySelector('.btn-set-cookie-1').addEventListener('click', () => {
+          fetch(
+            'https://test2.wpf.com:13112?add-header_Access-Control-Allow-Credentials=true&set_cookie=1&cookie_same_site=None&cookie_secure=1',
+            {
+              mode: 'cors',
+              credentials: 'include',
+            }
+          );
+        });
+      </script>
+    </div>
+    <div>
+      <button class="btn-set-cookie-2">
+        fetch 设置 cookie（test2.wpf.com）（credentials=same-origin）
+      </button>
+      <script>
+        document.querySelector('.btn-set-cookie-2').addEventListener('click', () => {
+          fetch(
+            'https://test2.wpf.com:13112?add-header_Access-Control-Allow-Credentials=true&set_cookie=1&cookie_same_site=None&cookie_secure=1',
+            {
+              mode: 'cors',
+              credentials: 'same-origin',
+            }
+          );
+        });
+      </script>
+    </div>
+
+    <div>
+      <button class="btn-fetch-test-1">fetch 测试（test2.wpf.com）（credentials=include）</button>
+      <script>
+        document.querySelector('.btn-fetch-test-1').addEventListener('click', () => {
+          fetch(`https://test2.wpf.com:13112?add-header_Access-Control-Allow-Credentials=true`, {
+            mode: 'cors',
+            credentials: 'include',
+          });
+        });
+      </script>
+    </div>
+
+    <div>
+      <button class="btn-fetch-test-2">
+        fetch 测试（test2.wpf.com）（credentials=same-origin）
+      </button>
+      <script>
+        document.querySelector('.btn-fetch-test-2').addEventListener('click', () => {
+          fetch(`https://test2.wpf.com:13112?add-header_Access-Control-Allow-Credentials=true`, {
+            mode: 'cors',
+            credentials: 'same-origin',
+          });
+        });
+      </script>
+    </div>
+  </body>
+</html>

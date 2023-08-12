@@ -16,18 +16,21 @@ const argvHttpsHost = argv['http-host'] || 'localhost';
 const app = express();
 
 app.all('**', function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', req.get('Origin'));
-
-  // res.header('Access-Control-Allow-Credentials', 'true');
-  // res.header('Access-Control-Allow-Headers', 'a,accept,upgrade-insecure-requests');
-
   // 添加响应头
   for (const queryKey in req.query) {
-    const headerKey = queryKey.match(/^add-header_(.*)$/)?.[1];
+    const headerKey = queryKey.match(/^add-header_(.*)$/i)?.[1];
     if (headerKey) {
       res.header(headerKey, req.query[queryKey]);
     }
   }
+
+  // 只有设置为 false 时不允许跨域
+  if (req.query.cors !== 'false') {
+    res.header('Access-Control-Allow-Origin', req.query.cors || req.get('Origin') || '*');
+  }
+
+  // res.header('Access-Control-Allow-Credentials', 'true');
+  // res.header('Access-Control-Allow-Headers', 'a,accept,upgrade-insecure-requests');
 
   // 条件添加 Service-Worker-Allowed 头
   if (req.method !== 'OPTIONS' && req.query.worker_allowed) {
@@ -36,7 +39,17 @@ app.all('**', function (req, res, next) {
 
   // 条件设置 cookie
   if (req.method !== 'OPTIONS' && req.query.set_cookie) {
-    res.cookie('my-cookie', Math.random());
+    const options = {};
+    if (req.query.cookie_domain) {
+      options.domain = req.query.cookie_domain;
+    }
+    if (req.query.cookie_same_site) {
+      options.sameSite = req.query.cookie_same_site;
+    }
+    if (req.query.cookie_secure) {
+      options.secure = true;
+    }
+    res.cookie('my-cookie', Math.random(), options);
   }
 
   // 条件 302
@@ -70,6 +83,22 @@ const httpsPort = 3111;
 httpsServer.listen(httpsPort, function () {
   console.log(`https listening ${httpsPort}.https://${argvHttpsHost}:${httpsPort}`);
 });
+
+const hostList = [
+  { host: 'localhost', httpsPort: 13110 },
+  { host: 'test.wpf.com', httpsPort: 13111 },
+  { host: 'test2.wpf.com', httpsPort: 13112 },
+  { host: 'test3.wpf.com', httpsPort: 13113 },
+  { host: 'test.wpf2.com', httpsPort: 13121 },
+];
+for (const hostItem of hostList) {
+  const options = {
+    key: fs.readFileSync(`./${hostItem.host}-key.pem`),
+    cert: fs.readFileSync(`./${hostItem.host}.pem`),
+  };
+  const httpsServer = https.createServer(options, app);
+  httpsServer.listen(hostItem.httpsPort, function () {});
+}
 
 if (argvHttp) {
   const httpServer = http.createServer(app);

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <hr />
+    <div>
+      <div>结论：</div>
+      <div>
+        SameSite
+        的匹配规则是，只要（请求域名和站点域名）父域名相同，就认为是同一站点（白名单域名除外）。不同站点的
+        cookie 被称为三方 cookie。
+      </div>
+      <div>SameSite 既会影响 set-cookie，也会影响 cookie 的携带。</div>
+    </div>
+    <hr />
+
+    <div>
+      <div>设置 cookie</div>
+      <div>
+        SameSite=Strict 时，在
+        <a href="https://test2.wpf.com:13112/20510cookie/22110-cookie-same-site/">test2.wpf.com</a
+        >或
+        <a href="https://test.wpf.com:13111/20510cookie/22110-cookie-same-site/">test.wpf.com</a>
+        能设置成功；在
+        <a href="https://test.wpf2.com:13121/20510cookie/22110-cookie-same-site/">test.wpf2.com</a
+        >不能设置成功。
+      </div>
+      <div>SameSite=None 时，在任何站点都能设置成功。</div>
+    </div>
+
+    <hr />
+    <div>
+      <div>携带 cookie</div>
+      <div>
+        SameSite=Strict 时，在
+        <a href="https://test2.wpf.com:13112/20510cookie/22110-cookie-same-site/">test2.wpf.com</a
+        >或
+        <a href="https://test.wpf.com:13111/20510cookie/22110-cookie-same-site/">test.wpf.com</a>
+        能携带成功；在
+        <a href="https://test.wpf2.com:13121/20510cookie/22110-cookie-same-site/">test.wpf2.com</a
+        >不能携带成功。
+      </div>
+      <div>SameSite=None 时，在任何站点都能携带成功。</div>
+    </div>
+    <hr />
+
+    <div>只有使用过的 cookie ，才会在浏览器的调试面板中显示出来。</div>
+    <hr />
+
+    <div>
+      <button class="btn-set-cookie-1">fetch 设置 cookie（test2.wpf.com）（SameSite=None）</button>
+      <script>
+        document.querySelector('.btn-set-cookie-1').addEventListener('click', () => {
+          fetch(
+            'https://test2.wpf.com:13112?add-header_Access-Control-Allow-Credentials=true&set_cookie=1&cookie_same_site=None&cookie_secure=1',
+            {
+              mode: 'cors',
+              credentials: 'include',
+            }
+          );
+        });
+      </script>
+    </div>
+    <div>
+      <button class="btn-set-cookie-2">
+        fetch 设置 cookie（test2.wpf.com）（SameSite=Strict）
+      </button>
+      <script>
+        document.querySelector('.btn-set-cookie-2').addEventListener('click', () => {
+          fetch(
+            'https://test2.wpf.com:13112?add-header_Access-Control-Allow-Credentials=true&set_cookie=1&cookie_same_site=Strict&cookie_secure=1',
+            {
+              mode: 'cors',
+              credentials: 'include',
+            }
+          );
+        });
+      </script>
+    </div>
+
+    <div>
+      <button class="btn-fetch-test">fetch 测试（test2.wpf.com）</button>
+      <script>
+        document.querySelector('.btn-fetch-test').addEventListener('click', () => {
+          fetch(`https://test2.wpf.com:13112?add-header_Access-Control-Allow-Credentials=true`, {
+            mode: 'cors',
+            credentials: 'include',
+          });
+        });
+      </script>
+    </div>
+  </body>
+</html>
