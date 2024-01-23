@@ -73,36 +73,35 @@ app.all('/**', (req, res) => {
   res.send('learn html service response');
 });
 
-const options = {
-  key: fs.readFileSync(`./${argvHttpsHost}-key.pem`),
-  cert: fs.readFileSync(`./${argvHttpsHost}.pem`),
-};
-
-const httpsServer = https.createServer(options, app);
-const httpsPort = 3111;
-httpsServer.listen(httpsPort, function () {
-  console.log(`https listening ${httpsPort}.https://${argvHttpsHost}:${httpsPort}`);
-});
-
-const hostList = [
-  { host: 'localhost', httpsPort: 13110 },
-  { host: 'test.wpf.com', httpsPort: 13111 },
-  { host: 'test2.wpf.com', httpsPort: 13112 },
-  { host: 'test3.wpf.com', httpsPort: 13113 },
-  { host: 'test.wpf2.com', httpsPort: 13121 },
-];
-for (const hostItem of hostList) {
-  const options = {
-    key: fs.readFileSync(`./${hostItem.host}-key.pem`),
-    cert: fs.readFileSync(`./${hostItem.host}.pem`),
-  };
-  const httpsServer = https.createServer(options, app);
-  httpsServer.listen(hostItem.httpsPort, function () {});
-}
-
 if (argvHttp) {
   const httpServer = http.createServer(app);
   httpServer.listen(argvHttpPort, function () {
     console.log(`http listening ${argvHttpPort}.`);
   });
+} else {
+  const options = {
+    key: fs.readFileSync(`./${argvHttpsHost}-key.pem`),
+    cert: fs.readFileSync(`./${argvHttpsHost}.pem`),
+  };
+  const httpsServer = https.createServer(options, app);
+  const httpsPort = 3111;
+  httpsServer.listen(httpsPort, function () {
+    console.log(`https listening ${httpsPort}.https://${argvHttpsHost}:${httpsPort}`);
+  });
+
+  const hostList = [
+    { host: 'localhost', httpsPort: 13110 },
+    { host: 'test.wpf.com', httpsPort: 13111 },
+    { host: 'test2.wpf.com', httpsPort: 13112 },
+    { host: 'test3.wpf.com', httpsPort: 13113 },
+    { host: 'test.wpf2.com', httpsPort: 13121 },
+  ];
+  for (const hostItem of hostList) {
+    const options = {
+      key: fs.readFileSync(`./${hostItem.host}-key.pem`),
+      cert: fs.readFileSync(`./${hostItem.host}.pem`),
+    };
+    const httpsServer = https.createServer(options, app);
+    httpsServer.listen(hostItem.httpsPort, function () {});
+  }
 }

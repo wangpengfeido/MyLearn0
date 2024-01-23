@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fetch mode</title>
+</head>
+
+<body>
+  <div>
+    <button id="fetch_no_cors">fetch no-cors</button>
+    <script>
+      document.querySelector("#fetch_no_cors").addEventListener("click", async () => {
+        const res = await fetch(
+          "http://localhost:3112/test-fetch", { mode: 'no-cors' }
+        ).catch(error => {
+          console.log('======error', error)
+        });
+        console.log('-----', res.status)
+      });
+    </script>
+  </div>
+
+  <div>
+    <button id="fetch_cors">fetch cors</button>
+    <script>
+      document.querySelector("#fetch_cors").addEventListener("click", async () => {
+        const res = await fetch(
+          "http://localhost:3112/test-fetch"
+        ).catch(error => {
+          console.log('======error', error)
+        });
+        console.log('-----', res.status)
+      });
+    </script>
+
+    <button id="fetch_cors_fail">fetch cors 跨域失败</button>
+    <script>
+      document.querySelector("#fetch_cors_fail").addEventListener("click", async () => {
+        const res = await fetch(
+          "http://localhost:3112/test-fetch?cors=false"
+        ).catch(error => {
+          console.log('======error', error)
+        });
+        console.log('-----', res.status)
+      });
+    </script>
+  </div>
+
+</body>
+
+</html>
