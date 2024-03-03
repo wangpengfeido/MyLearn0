@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>1</title>
+  <title>测试消息</title>
 </head>
 
 <body>
@@ -15,13 +15,26 @@
     const channel = new BroadcastChannel("test");
 
     document.querySelector(".btn").addEventListener("click", function () {
-      channel.postMessage({ aaa: "01" });
+      channel.postMessage("test message page");
     });
 
     channel
       .onmessage = function (event) {
-        console.log("index01=========receive message", event);
+        console.log("[test message page]receive message", event);
       };
+  </script>
+
+
+  <div><button id="test-fetch">test-fetch 并使在 worker 中发送消息</button></div>
+  <script>
+    document.querySelector("#test-fetch").addEventListener("click", async () => {
+      const res = await fetch(
+        "https://localhost:3011/test-fetch",
+        {
+          method: 'GET',
+        }
+      );
+    });
   </script>
 </body>
 

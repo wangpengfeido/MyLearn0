@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-  </head>
-  <body>
-    test fetch
-    <script>
-      // 注册service worker。注册时可选作用域,作用域只能为文件夹的子域
-      // service worker可以控制域中的所有页面
-      navigator.serviceWorker.register('./sw.js').then(
-        () => {
-          console.log('registration succeeded');
-        },
-        error => {
-          console.log('registration error');
-        }
-      );
-    </script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  test fetch
+
+  <div><button id="test-1">send</button></div>
+  <script>
+    document.querySelector("#test-1").addEventListener("click", async () => {
+      fetch('/test')
+    });
+  </script>
+
+  <script>
+    // 注册service worker。注册时可选作用域,作用域只能为文件夹的子域
+    // service worker可以控制域中的所有页面
+    navigator.serviceWorker.register('./sw.js').then(
+      () => {
+        console.log('registration succeeded');
+      },
+      error => {
+        console.log('registration error');
+      }
+    );
+  </script>
+</body>
+
 </html>
