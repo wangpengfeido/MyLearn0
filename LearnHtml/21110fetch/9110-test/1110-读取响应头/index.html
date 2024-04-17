@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fetch mode</title>
+</head>
+
+<body>
+  <div>
+    <div>结论：</div>
+    <ul>
+      <li>非跨域能拿到全部 header。</li>
+      <li>跨域默认只能拿到 content-type 等少数几个 header；如果加了 Access-Control-Expose-Headers 响应头，就能拿到全部 header。</li>
+    </ul>
+  </div>
+
+  <div>
+    <button id="fetch1">fetch1，跨域不加 Access-Control-Expose-Headers</button>
+    <script>
+      document.querySelector("#fetch1").addEventListener("click", async () => {
+        try {
+          const res = await fetch(
+            "http://localhost:3112/test-fetch?add-header_test-header=aaa",
+          )
+          console.log('-----status', res.status);
+          console.log('-----headers', res.headers);
+          console.log('-----header,content-length', res.headers.get('content-length'));
+          console.log('-----header,nothing', res.headers.get('nothing'));
+          res.headers.forEach((value, name) => {
+            console.log('-----header', name + ': ' + value);
+          })
+          const text = await res.text();
+          console.log('-----text', text)
+        } catch (error) {
+          console.log('======error', error)
+        }
+      });
+    </script>
+  </div>
+
+  <div>
+    <button id="fetch2">fetch2，跨域加 Access-Control-Expose-Headers</button>
+    <script>
+      document.querySelector("#fetch2").addEventListener("click", async () => {
+        try {
+          const res = await fetch(
+            "http://localhost:3112/test-fetch?add-header_test-header=aaa&add-header_Access-Control-Expose-Headers=*",
+          )
+          console.log('-----status', res.status);
+          console.log('-----headers', res.headers);
+          console.log('-----header,content-length', res.headers.get('content-length'));
+          console.log('-----header,nothing', res.headers.get('nothing'));
+          res.headers.forEach((value, name) => {
+            console.log('-----header', name + ': ' + value);
+          })
+          const text = await res.text();
+          console.log('-----text', text)
+        } catch (error) {
+          console.log('======error', error)
+        }
+      });
+    </script>
+  </div>
+
+
+
+</body>
+
+</html>
