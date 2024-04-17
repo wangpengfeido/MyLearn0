@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <div>这是一个测试用html</div>
+
+  <div>
+    <button id="fetch-1">发起请求</button>
+    <script>
+      document.getElementById('fetch-1').addEventListener('click', () => {
+        fetch('http://localhost:3113/api/test/1?cors=false', { method: 'POST', headers: { a: 1 } })
+      })
+    </script>
+  </div>
 </body>
+
 </html>

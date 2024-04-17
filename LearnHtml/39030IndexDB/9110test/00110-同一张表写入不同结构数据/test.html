@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+  <div>结论：只要主键结构一致，各记录其他部分不必保持一致。</div>
+
+  <div>
+    <button id="add1">add1</button>
+    <button id="add2">add2</button>
+  </div>
+
+  <script>
+    let indexDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+
+    let idbRequest = indexDB.open('db_test');
+    let db;
+    idbRequest.addEventListener('error', function (event) {
+      console.log('error');
+    });
+    idbRequest.addEventListener('success', function (event) {
+      console.log('success');
+      db = event.target.result;
+
+      db.addEventListener('error', function () { });
+    });
+
+    idbRequest.addEventListener('upgradeneeded', function (event) {
+      console.log('upgrade');
+      db = event.target.result;
+
+      let objectStore;
+      if (!db.objectStoreNames.contains('table_1')) {
+        objectStore = db.createObjectStore('table_1', { keyPath: 'a' });
+      }
+    });
+
+    document.querySelector('#add1').addEventListener('click', () => {
+      const value = Math.random().toString()
+      var request = db
+        .transaction(['table_1'], 'readwrite')
+        .objectStore('table_1')
+        .add({ a: value, b: value });
+      request.onsuccess = function (event) {
+        console.log('write success');
+      };
+      request.onerror = function (event) {
+        console.log('write error');
+      };
+    });
+
+    document.querySelector('#add2').addEventListener('click', () => {
+      const value = Math.random().toString()
+      var request = db
+        .transaction(['table_1'], 'readwrite')
+        .objectStore('table_1')
+        .add({ a: value, b: { b_1: value }, c: value });
+      request.onsuccess = function (event) {
+        console.log('write success');
+      };
+      request.onerror = function (event) {
+        console.log('write error');
+      };
+    });
+
+  </script>
+</body>
+
+</html>

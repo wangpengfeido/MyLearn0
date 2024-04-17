@@ -58,6 +58,10 @@ app.all('**', function (req, res, next) {
     res.header('Location', req.query.redirect_to);
   }
 
+  if (req.method === 'OPTIONS') {
+    res.status(404);
+  }
+
   next();
 });
 
