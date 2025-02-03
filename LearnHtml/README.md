@@ -13,3 +13,4 @@
 
 - 2xxxx 浏览器
   - 20510 cookie
+  - 20710 window-event-error

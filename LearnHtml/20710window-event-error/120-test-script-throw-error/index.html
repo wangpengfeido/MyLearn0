@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>script 的执行失败也会触发 error 事件。</div>
+  <div>此时事件 target 是 window，而不是 script dom 对象。</div>
+
+  <button id="btn1">create element</button>
+  <button id="btn2">append element to document</button>
+
+  <script>
+    window.addEventListener('error', (event) => {
+      console.log('------------ window on error', event, event?.target?.src);
+    }, true)
+
+    let domScript
+    document.querySelector('#btn1').addEventListener('click', () => {
+      domScript = document.createElement('script');
+      domScript.src = './test-js.js';
+    })
+    document.querySelector('#btn2').addEventListener('click', () => {
+      document.body.appendChild(domScript);
+    })
+  </script>
+
+</body>
+
+</html>
