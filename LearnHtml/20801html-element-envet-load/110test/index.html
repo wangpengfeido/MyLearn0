@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>script element 加载失败会触发其 onerror 事件，不会触发 onload 事件</div>
+  <div>加载的代码执行失败不会触发其 onerror 事件，仍然会触发 onload 事件</div>
+  <hr />
+  <div>script element 加载的代码先于 onload 事件执行。</div>
+  <hr />
+
+  <button id="btn1">create element</button>
+  <button id="btn2">append element to document</button>
+
+  <script>
+    let domScript
+    document.querySelector('#btn1').addEventListener('click', () => {
+      domScript = document.createElement('script');
+      domScript.src = './test-js.js';
+      domScript.onload = (event) => {
+        console.log('------------ domScript onload', event);
+        /**
+          * {
+          *   type: 'load'
+          * }
+          */
+      }
+      domScript.onerror = (event) => {
+        console.log('------------ domScript onerror', event);
+        /**
+          * {
+          *   type: 'error'
+          * }
+          */
+      }
+    })
+    document.querySelector('#btn2').addEventListener('click', () => {
+      document.body.appendChild(domScript);
+    })
+  </script>
+
+</body>
+
+</html>
